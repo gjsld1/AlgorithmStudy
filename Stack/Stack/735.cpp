@@ -26,11 +26,17 @@ vector<int> asteroidCollision(vector<int>& asteroids) {
                         if(sTop==temp) s.pop();
                         else if(sTop<temp) {
                             s.pop();
-                            sTop = s.top();
                             flag=1;
+                            if(s.empty()) break;
+                            sTop = s.top();
                         }
                         if(flag==0) break;
                         if(flag!=0 && sTop>temp) {
+                            flag=0;
+                            break;
+                        }
+                        if(flag!=0 && sTop==temp) {
+                            s.pop();
                             flag=0;
                             break;
                         }

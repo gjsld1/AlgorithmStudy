@@ -19,6 +19,7 @@ int solution(string S) {
     
     for(int i=0; i<S.length(); i++) alpha.push_back(pair<char,int>(S[i], i));
     sort(alpha.begin(), alpha.end());
+    int length = alpha.size();
     
     vector<int> sortOrder;
     for(int i=0; i<alpha.size(); i++) sortOrder.push_back(alpha[i].second);
@@ -27,6 +28,12 @@ int solution(string S) {
     while(it != sortOrder.end()-1) {
         int before = *it-*(it-1);
         int after = *(it+1)-*it;
+        
+        if(before>length/2) {
+            sortOrder.erase(it);
+            continue;
+        }
+        
         if(before*after < 0) {
             if(before<0) sortOrder.erase(it-1);
             else sortOrder.erase(it+1);
@@ -34,17 +41,17 @@ int solution(string S) {
         else {
             if(before<0) sortOrder.erase(it-1);
             else {
-                if(abs(before)==abs(after)) it++;
+                if(abs(before)==abs(after) || after == 1) it++;
                 else if(abs(before)>abs(after)) sortOrder.erase(it-1);
                 else sortOrder.erase(it+1);
             }
         }
     }
     
-    return alpha.size()-sortOrder.size();
+    return length-sortOrder.size();
 }
 
 int main() {
-    string str = "banana";
+    string str = "awesome";
     cout << solution(str);
 }

@@ -11,7 +11,7 @@
 #include <cstdlib>
 using namespace std;
 
-// Time Limit
+/* Time Limit
 int numDecodings(string s) {
     if(s[0] == '0') return 0;
     if(s.length() <= 1) return 1;
@@ -21,7 +21,7 @@ int numDecodings(string s) {
     if(s[0]=='1' || (s[0]=='2' && s[1]<='6')) result += numDecodings(s.substr(2));
     return result;
 }
-
+*/
 int numDecodings(string s) {
     if ( s.size() == 0 ) return 1;
     int* ways = new int[s.size()+1]();
@@ -54,7 +54,7 @@ int numDecodings(string s) {
     
     return ways[s.size()];
 }
-*/
+
 int main() {
     string num = "226";
     cout << numDecodings(num);

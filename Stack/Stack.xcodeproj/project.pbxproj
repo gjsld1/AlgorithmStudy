@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D4254DEB22780848009F5F7F /* 726.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4254DEA22780848009F5F7F /* 726.cpp */; };
+		D492A439229C3A2C00DCF356 /* bracket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D492A438229C3A2C00DCF356 /* bracket.cpp */; };
+		D492A43B229C3A9900DCF356 /* histogram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D492A43A229C3A9900DCF356 /* histogram.cpp */; };
+		D492A43D229C3AD800DCF356 /* postfixExpression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D492A43C229C3AD800DCF356 /* postfixExpression.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +30,9 @@
 		D4254DE12278014A009F5F7F /* 1021.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1021.cpp; sourceTree = "<group>"; };
 		D4254DE82278024C009F5F7F /* 735.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 735.cpp; sourceTree = "<group>"; };
 		D4254DEA22780848009F5F7F /* 726.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 726.cpp; sourceTree = "<group>"; };
+		D492A438229C3A2C00DCF356 /* bracket.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bracket.cpp; sourceTree = "<group>"; };
+		D492A43A229C3A9900DCF356 /* histogram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = histogram.cpp; sourceTree = "<group>"; };
+		D492A43C229C3AD800DCF356 /* postfixExpression.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = postfixExpression.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 				D4254DE12278014A009F5F7F /* 1021.cpp */,
 				D4254DE82278024C009F5F7F /* 735.cpp */,
 				D4254DEA22780848009F5F7F /* 726.cpp */,
+				D492A438229C3A2C00DCF356 /* bracket.cpp */,
+				D492A43A229C3A9900DCF356 /* histogram.cpp */,
+				D492A43C229C3AD800DCF356 /* postfixExpression.cpp */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -122,7 +131,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D492A439229C3A2C00DCF356 /* bracket.cpp in Sources */,
+				D492A43B229C3A9900DCF356 /* histogram.cpp in Sources */,
 				D4254DEB22780848009F5F7F /* 726.cpp in Sources */,
+				D492A43D229C3AD800DCF356 /* postfixExpression.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

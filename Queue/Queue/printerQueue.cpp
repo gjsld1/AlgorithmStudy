@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <queue>
-#include <utility>
 using namespace std;
 
 int main() {
@@ -18,32 +17,32 @@ int main() {
         int n, m;
         cin >> n >> m;
         
-        priority_queue<pair<int,int>> pq;
-        queue<pair<int,int>> q;
+        priority_queue<int> pq;
+        int* input = new int[n];
         
         int idx = 0;
         for(int i=0; i<n; i++) {
-            int priority;
-            cin >> priority;
-            
-            pq.push({priority, idx});
-            q.push({priority, idx});
-            idx++;
+            cin >> input[i];
+            pq.push(input[i]);
         }
         
         int order = 0;
-        while(q.front().second != m || q.front().first<pq.top().first) {
-            if(pq.top().first > q.front().first && pq.top().second > q.front().second) {
-                q.push({q.front().first, q.front().second});
-                q.pop();
+        int index = 0;
+        int* print = new int[n]();
+        
+        while(print[m]==0) {
+            if(print[index]==1 || input[index] < pq.top()) {
+                index++;
+                if(index>=n) index=0;
             }
-            else if(pq.top().second == q.front().second || pq.top().first == q.front().first) {
+            else if(input[index] == pq.top()) {
                 pq.pop();
-                q.pop();
+                print[index]=1;
                 order++;
+                index++;
+                if(index>=n) index=0;
             }
         }
-        order++;
         cout << order;
     }
 }

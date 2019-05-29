@@ -43,6 +43,6 @@ int main() {
                 if(index>=n) index=0;
             }
         }
-        cout << order;
+        cout << order << endl;
     }
 }

@@ -41,6 +41,16 @@ int main() {
             make[i] = 1;
             
             if(head->pointer == NULL) head->pointer = temp;
+            else {
+                struct node* end = head->pointer;
+                while(end->pointer != NULL) {
+                    if(end->pointer->num == next->num) break;
+                    end = end->pointer;
+                }
+                temp->pointer = end->pointer;
+                end->pointer = temp;
+                
+            }
         }
         
         struct node* pos = head->pointer;
@@ -54,8 +64,13 @@ int main() {
             pos = pos->pointer;
         }
         while(next != NULL) {
+            if(make[next->num]==1) {
+                next = next->pointer;
+                break;
+            }
             struct  node* after = new node;
             after->num = next->num;
+            make[next->num] = 1;
             after->pointer = pos->pointer;
             
             pos->pointer = after;
@@ -67,5 +82,8 @@ int main() {
     while(print != NULL) {
         cout << print->num;
         print = print->pointer;
+    }
+    for(int i=1; i<=n; i++) {
+        if(make[i]==0) cout << i;
     }
 }

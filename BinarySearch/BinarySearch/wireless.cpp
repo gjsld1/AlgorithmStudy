@@ -10,39 +10,40 @@
 #include <algorithm>
 using namespace std;
 
-int main() {
-    int n, c;
-    cin >> n >> c;
+int minDist(int* house, int n, int c) {
+    int min = 1;
+    int max = house[n-1]-house[0];
+    int mid, ans=0;
     
-    int* house = new int[n];
-    for(int i=0; i<n; i++) cin >> house[i];
-    
-    sort(house, house+n);
-    
-    int left = 1;
-    int right = house[n-1];
-    int mid, answer=0;
-    
-    while(left <= right) {
-        mid = (left+right)/2;
-        int install = 1;
+    while(min <= max) {
+        mid = (min+max)/2;
         int start = house[0];
+        int install = 1;
         
         for(int i=1; i<n; i++) {
-            int dist = house[i]-start;
-            
-            if(mid <= dist) {
+            if(mid<=house[i]-start) {
                 install++;
                 start = house[i];
             }
         }
         
         if(install >= c) {
-            left = mid+1;
-            answer = mid;
+            min = mid+1;
+            ans = install;
         }
-        else right = mid-1;
+        else max = mid-1;
     }
     
-    cout << answer;
+    return ans;
+}
+
+int main() {
+    int n, c;
+    cin >> n >> c;
+    
+    int* house = new int[n];
+    for(int i=0; i<n; i++) cin >> house[i];
+    sort(house, house+n);
+    
+    cout << minDist(house, n, c);
 }

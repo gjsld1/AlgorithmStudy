@@ -19,25 +19,30 @@ int main() {
     for(int i=0; i<n; i++) cin >> request[i];
     cin >> budget;
     
+    sort(request, request+n);
+    
     int min = request[0];
     int max = request[n-1];
     
-    int ans = 0;
+    int ans = 1;
     
-    while(min<=max) {
-        int mid = (min+max)/2;
-        int sum = 0;
-        
-        for(int i=0; i<n; i++) {
-            if(request[i] >= mid) sum+=mid;
-            else sum+=request[i];
+    if(min*n > budget) ans = budget/n;
+    else {
+        while(min<=max) {
+            int mid = (min+max)/2;
+            int sum = 0;
+            
+            for(int i=0; i<n; i++) {
+                if(request[i] >= mid) sum+=mid;
+                else sum+=request[i];
+            }
+            
+            if(sum <= budget) {
+                min=mid+1;
+                ans = mid;
+            }
+            else if(sum > budget) max=mid-1;
         }
-        
-        if(sum > budget) {
-            max=mid-1;
-            ans = mid;
-        }
-        else if(sum < budget) min=mid+1;
     }
     cout << ans;
 }

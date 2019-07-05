@@ -21,28 +21,26 @@ int main() {
     
     sort(request, request+n);
     
-    int min = request[0];
+    int min = 1;
     int max = request[n-1];
     
     int ans = 1;
     
-    if(min*n > budget) ans = budget/n;
-    else {
-        while(min<=max) {
-            int mid = (min+max)/2;
-            int sum = 0;
-            
-            for(int i=0; i<n; i++) {
-                if(request[i] >= mid) sum+=mid;
-                else sum+=request[i];
-            }
-            
-            if(sum <= budget) {
-                min=mid+1;
-                ans = mid;
-            }
-            else if(sum > budget) max=mid-1;
+    while(min<=max) {
+        int mid = (min+max)/2;
+        int sum = 0;
+        
+        for(int i=0; i<n; i++) {
+            if(request[i] >= mid) sum+=mid;
+            else sum+=request[i];
         }
+        
+        if(sum <= budget) {
+            min=mid+1;
+            ans = mid;
+        }
+        else if(sum > budget) max=mid-1;
     }
+    
     cout << ans;
 }

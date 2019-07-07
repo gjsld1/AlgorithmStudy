@@ -11,7 +11,7 @@
 using namespace std;
 
 int main() {
-    long long n, m;
+    int n, m;
     cin >> n >> m;
     
     long long* time = new long long[n];

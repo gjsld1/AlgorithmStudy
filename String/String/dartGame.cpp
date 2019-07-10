@@ -8,7 +8,6 @@
 //
 
 #include <iostream>
-#include <string>
 #include <cmath>
 using namespace std;
 
@@ -38,7 +37,7 @@ int main() {
                     break;
                     
                 case 'T':
-                    score[index++] = pow(x, T);
+                    score[index++] = pow(x,T);
                     x=0;
                     break;
             }

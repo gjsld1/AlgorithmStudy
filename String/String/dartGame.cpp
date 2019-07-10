@@ -61,9 +61,5 @@ int main() {
             }
         }
     }
-    
-    cout << score[0] << endl;
-    cout << score[1] << endl;
-    cout << score[2] << endl;
     cout << score[0]+score[1]+score[2];
 }

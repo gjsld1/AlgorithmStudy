@@ -12,6 +12,17 @@
 #include <vector>
 using namespace std;
 
+string manageSharp(string str) {
+    for(int i=1; i<str.length(); i++) {
+        if(str[i]=='#') {
+            str[i-1] = tolower(str[i-1]);
+            str.erase(i);
+            i--;
+        }
+    }
+    return str;
+}
+
 class Music {
     string start;
     string end;
@@ -55,6 +66,8 @@ public:
         disjoint(s);
         calculateTime();
         findPlayCode();
+        
+        playCode = manageSharp(playCode);
     }
     
     string getName() {
@@ -73,11 +86,14 @@ int main() {
     
     vector<Music> Musicinfos = {m1, m2};
     
+    m = manageSharp(m);
+    
     string ans = "";
     for(int i=0; i<Musicinfos.size(); i++) {
         if(Musicinfos[i].getPlayCode().find(m) != string::npos) {
             if(ans.length()<Musicinfos[i].getName().length()) ans=Musicinfos[i].getName();
         }
     }
+    if(ans=="") ans = "(None)";
     cout << ans;
 }

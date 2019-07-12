@@ -16,7 +16,7 @@ string manageSharp(string str) {
     for(int i=1; i<str.length(); i++) {
         if(str[i]=='#') {
             str[i-1] = tolower(str[i-1]);
-            str.erase(i);
+            str.erase(i,1);
             i--;
         }
     }

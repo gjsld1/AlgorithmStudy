@@ -41,24 +41,36 @@ public:
         disjoint(input);
     }
     
-    pair<string, int> getPair() {
-        return {head, number};
+    string getHead() {
+        return head;
     }
-    
+    int getNumber() {
+        return number;
+    }
     string getName() {
         return original;
     }
 };
 
-vector<string> sortName(vector<file> fn) {
-    vector<pair<pair<string,int>,string>> sorted;
-    
-    for(int i=0; i<fn.size(); i++) sorted.push_back({fn[i].getPair(), fn[i].getName()});
-    sort(sorted.begin(), sorted.end());
-    
-    vector<string> ans;
-    for(int i=0; i<sorted.size(); i++) ans.push_back(sorted[i].second);
-    return ans;
+void sortName(vector<file> fn) {
+    for(int i=0; i<fn.size(); i++){
+        for(int j=i; j<fn.size(); j++) {
+            if(fn[i].getHead().compare(fn[j].getHead())<0) {
+                file temp("");
+                temp = fn[i];
+                fn[i] = fn[j];
+                fn[j] = temp;
+            }
+            else if(fn[i].getHead().compare(fn[j].getHead())==0) {
+                if(fn[i].getNumber()>fn[j].getNumber()) {
+                    file temp("");
+                    temp = fn[i];
+                    fn[i] = fn[j];
+                    fn[j] = temp;
+                }
+            }
+        }
+    }
 }
 int main() {
     file f1("img12.png");
@@ -69,7 +81,7 @@ int main() {
     file f6("img2.JPG");
     
     vector<file> fileNames = {f1,f2,f3,f4,f5,f6};
-    vector<string> ans = sortName(fileNames);
+    sortName(fileNames);
     
-    for(int i=0; i<ans.size(); i++) cout << ans[i] <<" ";
+    for(int i=0; i<fileNames.size(); i++) cout << fileNames[i].getName() <<endl;
 }

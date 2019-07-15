@@ -20,6 +20,8 @@ class file {
     int number;
     string tail;
     
+    pair<string,int> p;
+    
     void disjoint(string input) {
         for(int i=0; i<input.length(); i++) {
             if(input[i]>=65 && input[i]<=90) input[i]=tolower(input[i]);
@@ -34,6 +36,8 @@ class file {
         string numTemp = input.substr(idxS, idxE-idxS);
         number = atoi(numTemp.c_str());
         tail = input.substr(idxE);
+        
+        p = {head,number};
     }
 public:
     file(string input) {
@@ -41,37 +45,21 @@ public:
         disjoint(input);
     }
     
-    string getHead() {
-        return head;
-    }
-    int getNumber() {
-        return number;
-    }
     string getName() {
         return original;
     }
+    
+    pair<string,int> getPair() {
+        return p;
+    }
 };
 
-void sortName(vector<file> fn) {
-    for(int i=0; i<fn.size(); i++){
-        for(int j=i; j<fn.size(); j++) {
-            if(fn[i].getHead().compare(fn[j].getHead())<0) {
-                file temp("");
-                temp = fn[i];
-                fn[i] = fn[j];
-                fn[j] = temp;
-            }
-            else if(fn[i].getHead().compare(fn[j].getHead())==0) {
-                if(fn[i].getNumber()>fn[j].getNumber()) {
-                    file temp("");
-                    temp = fn[i];
-                    fn[i] = fn[j];
-                    fn[j] = temp;
-                }
-            }
-        }
-    }
+bool compPair(file fn1, file fn2) {
+    pair<string,int> p1 = fn1.getPair();
+    pair<string,int> p2 = fn2.getPair();
+    return p1<p2;
 }
+
 int main() {
     file f1("img12.png");
     file f2("img10.png");
@@ -81,7 +69,7 @@ int main() {
     file f6("img2.JPG");
     
     vector<file> fileNames = {f1,f2,f3,f4,f5,f6};
-    sortName(fileNames);
+    sort(fileNames.begin(), fileNames.end(), compPair);
     
     for(int i=0; i<fileNames.size(); i++) cout << fileNames[i].getName() <<endl;
 }

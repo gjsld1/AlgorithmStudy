@@ -35,39 +35,44 @@ int combination(vector<int> v) {
     return c;
 }
 int main() {
-    int n;
-    cin >> n;
-    
-    int max2 = n/2;
-    
-    vector<int> one;
-    for(int i=0; i<n; i++) one.push_back(1);
-    
-    vector<vector<int>> line;
-    line.push_back(one);
-    
-    for(int i=0; i<max2; i++) {
-        one.erase(one.begin());
-        one.erase(one.begin());
-        one.push_back(2);
+    int tc;
+    cin >> tc;
+    for(int l=0; l<tc; l++) {
+        int n;
+        cin >> n;
         
+        int max2 = n/2;
+        
+        vector<int> one;
+        for(int i=0; i<n; i++) one.push_back(1);
+        
+        vector<vector<int>> line;
         line.push_back(one);
-    }
-    
-    for(int i=0; i<line.size(); i++) {
-        vector<int> temp = line[i];
-        while(temp.size()>=3 && temp[2]==1) {
-            temp.erase(temp.begin());
-            temp.erase(temp.begin());
-            temp.erase(temp.begin());
-            temp.push_back(3);
+        
+        for(int i=0; i<max2; i++) {
+            one.erase(one.begin());
+            one.erase(one.begin());
+            one.push_back(2);
             
-            line.push_back(temp);
+            line.push_back(one);
         }
+        
+        int lineSize = line.size();
+        for(int i=0; i<lineSize; i++) {
+            vector<int> temp = line[i];
+            while(temp.size()>=3 && temp[2]==1) {
+                temp.erase(temp.begin());
+                temp.erase(temp.begin());
+                temp.erase(temp.begin());
+                temp.push_back(3);
+                
+                line.push_back(temp);
+            }
+        }
+        
+        int ans = 0;
+        for(int i=0; i<line.size(); i++) ans += combination(line[i]);
+        
+        cout << ans << endl;
     }
-    
-    int ans = 0;
-    for(int i=0; i<line.size(); i++) ans += combination(line[i]);
-    
-    cout << ans;
 }

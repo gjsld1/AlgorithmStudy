@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D4ED33582293C5440063FD06 /* 84.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4ED33572293C5440063FD06 /* 84.cpp */; };
+		D41BC08822D2170D00C9E34B /* cableCut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D41BC08722D2170D00C9E34B /* cableCut.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +23,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D41BC08722D2170D00C9E34B /* cableCut.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cableCut.cpp; sourceTree = "<group>"; };
+		D454BB6C22C25E7400D86BE4 /* wireless.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = wireless.cpp; sourceTree = "<group>"; };
+		D454BB6E22C91EB700D86BE4 /* budget.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = budget.cpp; sourceTree = "<group>"; };
+		D4E95D5D22CF9FB8001963D3 /* immigration.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = immigration.cpp; sourceTree = "<group>"; };
 		D4ED33542293C5440063FD06 /* BinarySearch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinarySearch; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4ED33572293C5440063FD06 /* 84.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 84.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +62,10 @@
 			isa = PBXGroup;
 			children = (
 				D4ED33572293C5440063FD06 /* 84.cpp */,
+				D454BB6C22C25E7400D86BE4 /* wireless.cpp */,
+				D454BB6E22C91EB700D86BE4 /* budget.cpp */,
+				D4E95D5D22CF9FB8001963D3 /* immigration.cpp */,
+				D41BC08722D2170D00C9E34B /* cableCut.cpp */,
 			);
 			path = BinarySearch;
 			sourceTree = "<group>";
@@ -118,7 +126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4ED33582293C5440063FD06 /* 84.cpp in Sources */,
+				D41BC08822D2170D00C9E34B /* cableCut.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

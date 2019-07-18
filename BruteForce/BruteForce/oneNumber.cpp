@@ -25,6 +25,15 @@ int countNum(int n) {
         for(int j=1; i-(2*j)>=0; j++) ans++;
     }
     
+    /*
+    if(digit100>=digit10) {
+        for(int i=digit100-digit10; digit100-(i*2)>=0; i++) ans++;
+    }
+    else {
+        for(int i=0; i<=digit100-digit10 && digit100+(2*i)<=digit1; i++) ans++;
+        for(int i=1; digit100-(2*i)>=0; i++) ans++;
+    }
+    */
     return ans;
 }
 

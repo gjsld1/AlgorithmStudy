@@ -17,8 +17,6 @@ int countNum(int n) {
     int ans = 99;
     
     int digit100 = n/100;
-    int digit10 = (n-(100*digit100))/10;
-    int digit1 = n%10;
     
     for(int i=1; i<=digit100; i++) {
         for(int j=0; j<=(9-i)/2; j++) {

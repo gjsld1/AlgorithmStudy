@@ -20,20 +20,18 @@ int countNum(int n) {
     int digit10 = (n-(100*digit100))/10;
     int digit1 = n%10;
     
-    for(int i=1; i<digit100; i++) {
-        for(int j=0; j<=(9-i)/2; j++) ans++;
-        for(int j=1; i-(2*j)>=0; j++) ans++;
+    for(int i=1; i<=digit100; i++) {
+        for(int j=0; j<=(9-i)/2; j++) {
+            if(100*i+10*(i+j)+(i+j+j) > n) continue;
+            ans++;
+        }
+        for(int j=1; i-(2*j)>=0; j++) {
+            if(100*i+10*(i-j)+(i-j-j) > n) continue;
+            ans++;
+        }
     }
     
-    /*
-    if(digit100>=digit10) {
-        for(int i=digit100-digit10; digit100-(i*2)>=0; i++) ans++;
-    }
-    else {
-        for(int i=0; i<=digit100-digit10 && digit100+(2*i)<=digit1; i++) ans++;
-        for(int i=1; digit100-(2*i)>=0; i++) ans++;
-    }
-    */
+    
     return ans;
 }
 

@@ -1,4 +1,5 @@
 //
+//  baekjoon 9012
 //  bracket.cpp
 //  Stack
 //
@@ -7,10 +8,38 @@
 //
 
 #include <iostream>
-#include <string>
 #include <stack>
+#include <string>
 using namespace std;
 
+int main() {
+    int t;
+    cin >> t;
+    
+    for(int i=0; i<t; i++) {
+        stack<char> s;
+        bool isRight = true;
+        
+        string str;
+        cin >> str;
+        for(int j=0; j<str.length(); j++) {
+            if(str[j]=='(') s.push('(');
+            else if(str[j]==')') {
+                if(s.empty()) {
+                    isRight=false;
+                    break;
+                }
+                s.pop();
+            }
+        }
+        if(!s.empty()) isRight=false;
+        
+        if(isRight) cout << "YES" << endl;
+        else cout << "NO" << endl;
+    }
+}
+
+/*
 string isVPS(string str) {
     string check = "NO";
     stack<char> bracket;
@@ -40,3 +69,4 @@ int main() {
         cout << isVPS(str) << endl;
     }
 }
+*/

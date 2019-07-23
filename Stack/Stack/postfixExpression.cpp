@@ -1,4 +1,5 @@
 //
+//  baekjoon 1918
 //  postfixExpression.cpp
 //  Stack
 //
@@ -8,54 +9,48 @@
 
 #include <iostream>
 #include <stack>
-#include <string>
 using namespace std;
-int priority(char c) {
-    switch(c) {
-        case '(': return 0;
-        case '+': case '-': return 1;
-        case '*': case '/': return 2;
-    }
-    return -1;
-}
 
-string postfixExpression(string input) {
-    string postfix = "";
-    stack<char> s;
-    
-    for(int i=0; i<input.length(); i++) {
-        if(input[i]>='A' && input[i]<='Z') postfix += input[i]; //print operand
-        else if(input[i]=='(') s.push(input[i]);    //push '('
-        else if(input[i]==')') {    //pop until '('
-            while(s.top()!='(') {
-                postfix += s.top();
-                s.pop();
-            }
-            s.pop();    //remove '('
-        }
-        else {
-            if(s.empty()) s.push(input[i]);
-            else {
-                while(!s.empty() && priority(s.top()) >= priority(input[i])) {
-                    postfix += s.top();
-                    s.pop();
-                }
-                s.push(input[i]);
-            }
-        }
+int priority(char c) {
+    switch (c) {
+        case '(':
+            return 0;
+        case '+': case '-':
+            return 1;
+        case '*': case '/':
+            return 2;
     }
-    
-    while(!s.empty()) {
-        postfix += s.top();
-        s.pop();
-    }
-    
-    return postfix;
+    return 0;
 }
 
 int main() {
-    string input;
-    cin >> input;
+    char c;
+    stack<char> operand;
     
-    cout << postfixExpression(input);
+    while((c=cin.get())!='\n') {
+        if(c>=65 && c<=90) cout << c;
+        else if(c=='(') operand.push(c);
+        else if(c==')') {
+            while(operand.top()!='(') {
+                cout << operand.top();
+                operand.pop();
+            }
+            operand.pop();
+        }
+        else {
+            if(operand.empty() || priority(operand.top())<=priority(c)) operand.push(c);
+            else {
+                while(!operand.empty() && priority(operand.top()) >= priority(c)) {
+                    cout << operand.top();
+                    operand.pop();
+                }
+                operand.push(c);
+            }
+        }
+    }
+    
+    while(!operand.empty()) {
+        cout << operand.top();
+        operand.pop();
+    }
 }

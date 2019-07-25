@@ -35,7 +35,7 @@ int main() {
     
     int ans = 0;
     for(int i=0; i<n*n; i++) {
-        while(binary_search(sumCD, sumCD+n*n, -sumAB[i])) ans++;
+        if(binary_search(sumCD, sumCD+n*n, -sumAB[i])) ans++;
     }
     cout << ans;
 }

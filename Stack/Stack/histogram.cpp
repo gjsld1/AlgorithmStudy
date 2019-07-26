@@ -1,4 +1,5 @@
 //
+//  baekjoon 1725 & leetcode largest rectangle in histogram
 //  histogram.cpp
 //  Stack
 //
@@ -7,43 +8,34 @@
 //
 
 #include <iostream>
-#include <vector>
 #include <stack>
 #include <algorithm>
 using namespace std;
-
-int largestRectangle(vector<int> heights) {
-    int maxArea = 0;
-    int len = heights.size();
-    stack<int> s;
-    
-    for(int i=0; i<=len; i++) {
-        int height;
-        if(i==len) height = 0;
-        else height = heights[i];
-        
-        if(s.empty() || height>=heights[s.top()]) s.push(i);
-        else {
-            int top = s.top();
-            s.pop();
-            
-            maxArea = max(maxArea, heights[top] * (s.empty()? i : i-1-s.top()));
-            i--;
-        }
-    }
-    
-    return maxArea;
-}
 
 int main() {
     int n;
     cin >> n;
     
-    vector<int> heights;
-    int temp;
-    for(int i=0; i<n; i++) {
-        cin >> temp;
-        heights.push_back(temp);
+    int* heights = new int[n];
+    for(int i=0; i<n; i++) cin>>heights[i];
+    
+    stack<int> s;
+    int height;
+    int ans = 0;
+    
+    for(int i=0; i<=n; i++) {
+        if(i==n) height=0;
+        else height=heights[i];
+        
+        if(s.empty() || height>=heights[s.top()]) s.push(i);
+        else {
+            int t = s.top(); s.pop();
+            int width;
+            if(s.empty()) width = i;
+            else width = i-1-s.top();
+            ans = max(ans, heights[t]*width);
+            i--;
+        }
     }
-    cout << largestRectangle(heights);
+    cout << ans;
 }

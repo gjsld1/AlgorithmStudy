@@ -1,4 +1,5 @@
 //
+//  baekjoon 1966
 //  printerQueue.cpp
 //  Queue
 //
@@ -10,6 +11,42 @@
 #include <queue>
 using namespace std;
 
+int main() {
+    int tc;
+    cin >> tc;
+    for(int l=0; l<tc; l++) {
+        int n, m;
+        cin >> n >> m;
+        
+        int* doc = new int[n];
+        priority_queue<int> pq;
+        
+        for(int i=0; i<n; i++) {
+            cin >> doc[i];
+            pq.push(doc[i]);
+        }
+        
+        int out = -1;
+        int order = 0;
+        int idx = 0;
+        while(out!=m) {
+            if(idx>=n) idx%=n;
+            
+            if(doc[idx]<pq.top()) idx++;
+            else if(doc[idx]==pq.top()) {
+                pq.pop();
+                order++;
+                out = idx;
+                idx++;
+            }
+            else idx++;
+        }
+        
+        cout << order << endl;
+    }
+}
+
+/*
 int main() {
     int tc;
     cin >> tc;
@@ -46,3 +83,4 @@ int main() {
         cout << order << endl;
     }
 }
+*/

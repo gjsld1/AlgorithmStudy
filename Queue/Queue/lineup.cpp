@@ -42,3 +42,88 @@ int main() {
         cout << front;
     }
 }
+
+/* Time Limit
+ 
+#include <iostream>
+using namespace std;
+
+struct node {
+    int num;
+    struct node* pointer = NULL;
+};
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    
+    int* make = new int[n+1]();
+    struct node* hash = new struct node[n+1];
+    
+    for(int i=0; i<m; i++) {
+        int a, b;
+        cin >> a >> b;
+        
+        struct node *temp = new node;
+        temp->num = b;
+        temp->pointer = hash[a].pointer;
+        hash[a].pointer = temp;
+    }
+    
+    struct node* head = new node;
+    for(int i=1; i<=n; i++) {
+        struct node* next = hash[i].pointer;
+        if(next == NULL) continue;
+        struct node *temp = new node;
+        if(make[i]==0) {
+            temp->num = i;
+            make[i] = 1;
+            
+            if(head->pointer == NULL) head->pointer = temp;
+            else {
+                struct node* end = head->pointer;
+                while(end->pointer != NULL) {
+                    if(end->pointer->num == next->num) break;
+                    end = end->pointer;
+                }
+                temp->pointer = end->pointer;
+                end->pointer = temp;
+                
+            }
+        }
+        
+        struct node* pos = head->pointer;
+        while(pos->num != i && pos->pointer != NULL) {
+            if(pos->pointer->num == next->num) {
+                temp->pointer = pos->pointer;
+                pos->pointer = temp;
+                next = next->pointer;
+                break;
+            }
+            pos = pos->pointer;
+        }
+        while(next != NULL) {
+            if(make[next->num]==1) {
+                next = next->pointer;
+                break;
+            }
+            struct  node* after = new node;
+            after->num = next->num;
+            make[next->num] = 1;
+            after->pointer = pos->pointer;
+            
+            pos->pointer = after;
+            next = next->pointer;
+        }
+    }
+    
+    struct node* print = head->pointer;
+    while(print != NULL) {
+        cout << print->num;
+        print = print->pointer;
+    }
+    for(int i=1; i<=n; i++) {
+        if(make[i]==0) cout << i;
+    }
+}
+*/

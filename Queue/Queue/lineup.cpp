@@ -41,6 +41,8 @@ int main() {
         }
         cout << front;
     }
+    
+    //if(n==1) cout << "1";
 }
 
 /* Time Limit

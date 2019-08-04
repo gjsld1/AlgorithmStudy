@@ -3,18 +3,13 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "countNum(int):oneNumber.cpp">
+         contextName = "main:lineup.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "100*i+10*(i+j)+(i+j+j)">
+               value = "priority[i]">
             </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "main:sumZero.cpp">
-         <PersistentStrings>
             <PersistentString
-               value = "sumAB[i]">
+               value = "priority[temp-&gt;n]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

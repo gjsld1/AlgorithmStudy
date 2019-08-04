@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D408760922A2B8E300E61270 /* lineup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D408760822A2B8E300E61270 /* lineup.cpp */; };
+		D4E2ED4422F48274000D1218 /* lineup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D408760822A2B8E300E61270 /* lineup.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +26,7 @@
 		D408760822A2B8E300E61270 /* lineup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = lineup.cpp; sourceTree = "<group>"; };
 		D492A45A229C54EC00DCF356 /* Queue */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Queue; sourceTree = BUILT_PRODUCTS_DIR; };
 		D492A45D229C54EC00DCF356 /* printerQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = printerQueue.cpp; sourceTree = "<group>"; };
+		D4E2ED4222F47595000D1218 /* topologySort.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = topologySort.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 			children = (
 				D492A45D229C54EC00DCF356 /* printerQueue.cpp */,
 				D408760822A2B8E300E61270 /* lineup.cpp */,
+				D4E2ED4222F47595000D1218 /* topologySort.cpp */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -120,7 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D408760922A2B8E300E61270 /* lineup.cpp in Sources */,
+				D4E2ED4422F48274000D1218 /* lineup.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

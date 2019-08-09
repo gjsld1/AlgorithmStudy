@@ -8,55 +8,55 @@
 //
 
 #include <iostream>
-#include <vector>
-#include <utility>
+#include <map>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 int main() {
-    int n, m;
+    int n;
     cin >> n;
     
-    int* info = new int[n];
-    int sYear;
-    cin >> sYear >> info[0];
-    
-    for(int i=1; i<n; i++) {
-        int temp;
-        cin >> temp >> info[i];
+    map<long long, long long> map;
+    for(int i=0; i<n; i++) {
+        long long a, b;
+        cin >> a >> b;
+        map.insert({a,b});
     }
     
+    int m;
     cin >> m;
+    
     for(int i=0; i<m; i++) {
-        int start, end;
-        cin >> start >> end;
+        long long sYear, eYear;
+        cin >> sYear >> eYear;
         
-        string ans = "true";
-        start -= sYear;
-        end -= sYear;
+        string ans = "false";
         
-        for(int j=start+1; j<end; j++) {
-            if(info[j]>info[end]) {
-                ans="false";
-                break;
+        long long year = eYear-sYear;
+        long long* check = new long long[year]();
+        
+        long long temp = eYear;
+        while(map.find(temp)==map.end()) temp--;
+        long long endRain = map[temp];
+        if(temp!=eYear) check[year-1] = 0;
+        else check[year-1] = 1;
+        
+        int idx=0;
+        for(int i=0; i<year-1; i++) {
+            long long tmp = sYear;
+            if(map.find(++tmp)!=map.end()) {
+                if(endRain-map[tmp]>=0) check[idx++]=1;
+                else check[idx++]=-1;
             }
+            else check[idx++]=0;
+        }
+        
+        if(find(check, check+year, -1)!=check+year) ans="false";
+        else {
+            if(find(check, check+year, 0)!=check+year) ans="maybe";
+            else ans="true";
         }
         cout << ans << endl;
     }
-    /*
-    vector<pair<long long,long long>> v;
-    for(int i=0; i<n; i++) {
-        int a, b;
-        cin >> a >> b;
-        v.push_back({a,b});
-    }
-    
-    cin >> m;
-    for(int i=0; i<m; i++) {
-        int x, y;
-        cin >> x >> y;
-        
-        vector<pair<long long>>::iterator iter = find(v.begin(), v.end());
-    }
-     */
 }

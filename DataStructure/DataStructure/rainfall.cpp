@@ -20,15 +20,11 @@ string checkTure(long sYear, long long eYear) {
     
     long long year = eYear-sYear;
     
-    long long temp = eYear;
-    while(mapRain.find(temp)==mapRain.end()) temp--;
-    long long endRain = mapRain[temp];
-    if(temp!=eYear) ans="maybe";
-    
+    if(mapRain.find(eYear)==mapRain.end()) return "maybe";
     for(int i=0; i<year-1; i++) {
         long long tmp = sYear;
         if(mapRain.find(++tmp)!=mapRain.end()) {
-            if(endRain-mapRain[tmp]>=0) continue;
+            if(mapRain[eYear]-mapRain[tmp]>=0) continue;
             else return "false";
         }
         else ans="maybe";

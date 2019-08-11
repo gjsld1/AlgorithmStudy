@@ -13,21 +13,24 @@
 #include <algorithm>
 using namespace std;
 
-map<long long, long long> mapRain;
+map<long long, long long> mapR;
 
 string checkTure(long sYear, long long eYear) {
     string ans="true";
     
-    long long year = eYear-sYear;
+    map<long long, long long>::iterator iter = mapR.begin();
+    if(mapR.find(eYear)==mapR.end()) return "maybe";
+    if(mapR.find(sYear)==mapR.end()) ans="maybe";
+    while(iter->first <= sYear) iter++;
     
-    if(mapRain.find(eYear)==mapRain.end()) return "maybe";
-    for(int i=0; i<year-1; i++) {
-        long long tmp = sYear;
-        if(mapRain.find(++tmp)!=mapRain.end()) {
-            if(mapRain[eYear]-mapRain[tmp]>=0) continue;
-            else return "false";
+    while(iter->first < eYear) {
+        map<long long, long long>::iterator temp = iter;
+        temp++;
+        if(temp->first - iter->first>1) {
+            ans = "maybe";
         }
-        else ans="maybe";
+        if(iter->second > mapR[eYear]) return "false";
+        iter++;
     }
     return ans;
 }
@@ -39,7 +42,7 @@ int main() {
     for(int i=0; i<n; i++) {
         long long a, b;
         cin >> a >> b;
-        mapRain.insert({a,b});
+        mapR.insert({a,b});
     }
     
     int m;

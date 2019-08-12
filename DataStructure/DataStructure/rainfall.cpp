@@ -15,22 +15,20 @@ using namespace std;
 
 map<long long, long long> mapR;
 
-string checkTure(long sYear, long long eYear) {
+string checkTrue(long sYear, long long eYear) {
     string ans="true";
     
+    if(mapR[eYear]==0) return "maybe";
+    if(mapR[sYear]==0) ans="maybe";
+    
     map<long long, long long>::iterator iter = mapR.begin();
-    if(mapR.find(eYear)==mapR.end()) return "maybe";
-    if(mapR.find(sYear)==mapR.end()) ans="maybe";
     while(iter->first <= sYear) iter++;
+    if(iter->first==eYear) return "maybe";
     
     while(iter->first < eYear) {
         map<long long, long long>::iterator temp = iter;
-        temp++;
-        if(temp->first - iter->first>1) {
-            ans = "maybe";
-        }
-        if(iter->second > mapR[eYear]) return "false";
-        iter++;
+        if((++temp)->first - iter->first>1) ans="maybe";
+        if(iter++->second >= mapR[eYear]) return "false";
     }
     return ans;
 }
@@ -52,6 +50,6 @@ int main() {
         long long sYear, eYear;
         cin >> sYear >> eYear;
         
-        cout << checkTure(sYear, eYear) << endl;
+        cout << checkTrue(sYear, eYear) << endl;
     }
 }

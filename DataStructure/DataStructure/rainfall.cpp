@@ -25,11 +25,17 @@ string checkTrue(long sYear, long long eYear) {
     while(iter->first <= sYear) iter++;
     if(iter->first==eYear) return "maybe";
     
+    map<long long, long long>::iterator it=mapR.end();
+    while(iter->first>eYear) iter--;
+    if(max_element(iter, it)->second >= mapR[eYear]) return "false";
+    
+    /*
     while(iter->first < eYear) {
         map<long long, long long>::iterator temp = iter;
         if((++temp)->first - iter->first>1) ans="maybe";
         if(iter++->second >= mapR[eYear]) return "false";
     }
+     */
     return ans;
 }
 

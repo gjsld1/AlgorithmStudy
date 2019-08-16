@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "main:rainfall.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "info[j]">
+            </PersistentString>
+            <PersistentString
+               value = "info[end]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "checkTrue(long, long long):rainfall.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "max_element(iter,it)-&gt;second">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

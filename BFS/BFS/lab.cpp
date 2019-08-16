@@ -50,7 +50,6 @@ int main() {
                 temp[safeZone[j].first][safeZone[j].second] = 1;
                 temp[safeZone[k].first][safeZone[k].second] = 1;
                 
-                
                 while(!q.empty()) {
                     pair<int,int> front = q.front();
                     int x=front.first;
@@ -58,27 +57,27 @@ int main() {
                     q.pop();
                     
                     if(x-1>=0 && temp[x-1][y]==safe) {
-                        temp[x-1][y]=2;
+                        temp[x-1][y]=virus;
                         q.push({x-1,y});
                     }
                     if(x+1<n && temp[x+1][y]==safe) {
-                        temp[x+1][y]=2;
+                        temp[x+1][y]=virus;
                         q.push({x+1,y});
                     }
                     if(y-1>=0 && temp[x][y-1]==safe) {
-                        temp[x][y-1]=2;
+                        temp[x][y-1]=virus;
                         q.push({x,y-1});
                     }
                     if(y+1<m && temp[x][y+1]==safe) {
-                        temp[x][y+1]=2;
+                        temp[x][y+1]=virus;
                         q.push({x,y+1});
                     }
                 }
                 
                 int tmp = 0;
-                for(int p=0; p<n; p++) {
-                    for(int q=0; q<m; q++) {
-                        if(temp[p][q]==0) tmp++;
+                for(int w=0; w<n; w++) {
+                    for(int e=0; e<m; e++) {
+                        if(temp[w][e]==0) tmp++;
                     }
                 }
                 if(ans<tmp) ans=tmp;

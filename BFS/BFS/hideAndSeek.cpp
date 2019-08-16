@@ -34,13 +34,13 @@ int count(int n, int k) {
         }
         
         temp = front.first-1;
-        if(visited[temp]==0 && temp>=0) {
+        if(temp>=0 && visited[temp]==0) {
             q.push({temp, front.second+1});
             visited[temp]=1;
         }
         
         temp = front.first*2;
-        if(visited[temp]==0 && temp<=MAX) {
+        if(temp<=MAX && visited[temp]==0) {
             q.push({temp, front.second+1});
             visited[temp]=1;
         }

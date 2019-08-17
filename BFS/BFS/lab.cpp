@@ -13,9 +13,9 @@
 #include <vector>
 using namespace std;
 
-#define safe 0
-#define wall 1
-#define virus 2
+#define SAFE 0
+#define WALL 1
+#define VIRUS 2
 
 int main() {
     int n, m;
@@ -29,8 +29,8 @@ int main() {
     for(int i=0; i<n; i++) {
         for(int j=0; j<m; j++) {
             cin >> lab[i][j];
-            if(lab[i][j]==safe) safeZone.push_back({i,j});
-            else if(lab[i][j]==virus) q.push({i,j});
+            if(lab[i][j]==SAFE) safeZone.push_back({i,j});
+            else if(lab[i][j]==VIRUS) q.push({i,j});
         }
     }
     
@@ -40,44 +40,46 @@ int main() {
         for(int j=i+1; j<size; j++) {
             for(int k=j+1; k<size; k++) {
                 int** temp = new int*[n];
+                queue<pair<int,int>> tempQ = q;
+                
                 for(int l=0; l<n; l++) temp[l]=new int[m];
                 for(int p=0; p<n; p++) {
                     for(int q=0; q<m; q++) {
                         temp[p][q]=lab[p][q];
                     }
                 }
-                temp[safeZone[i].first][safeZone[i].second] = 1;
-                temp[safeZone[j].first][safeZone[j].second] = 1;
-                temp[safeZone[k].first][safeZone[k].second] = 1;
+                temp[safeZone[i].first][safeZone[i].second] = WALL;
+                temp[safeZone[j].first][safeZone[j].second] = WALL;
+                temp[safeZone[k].first][safeZone[k].second] = WALL;
                 
-                while(!q.empty()) {
-                    pair<int,int> front = q.front();
+                while(!tempQ.empty()) {
+                    pair<int,int> front = tempQ.front();
                     int x=front.first;
                     int y=front.second;
-                    q.pop();
+                    tempQ.pop();
                     
-                    if(x-1>=0 && temp[x-1][y]==safe) {
-                        temp[x-1][y]=virus;
-                        q.push({x-1,y});
+                    if(x-1>=0 && temp[x-1][y]==SAFE) {
+                        temp[x-1][y]=VIRUS;
+                        tempQ.push({x-1,y});
                     }
-                    if(x+1<n && temp[x+1][y]==safe) {
-                        temp[x+1][y]=virus;
-                        q.push({x+1,y});
+                    if(x+1<n && temp[x+1][y]==SAFE) {
+                        temp[x+1][y]=VIRUS;
+                        tempQ.push({x+1,y});
                     }
-                    if(y-1>=0 && temp[x][y-1]==safe) {
-                        temp[x][y-1]=virus;
-                        q.push({x,y-1});
+                    if(y-1>=0 && temp[x][y-1]==SAFE) {
+                        temp[x][y-1]=VIRUS;
+                        tempQ.push({x,y-1});
                     }
-                    if(y+1<m && temp[x][y+1]==safe) {
-                        temp[x][y+1]=virus;
-                        q.push({x,y+1});
+                    if(y+1<m && temp[x][y+1]==SAFE) {
+                        temp[x][y+1]=VIRUS;
+                        tempQ.push({x,y+1});
                     }
                 }
                 
                 int tmp = 0;
                 for(int w=0; w<n; w++) {
                     for(int e=0; e<m; e++) {
-                        if(temp[w][e]==0) tmp++;
+                        if(temp[w][e]==SAFE) tmp++;
                     }
                 }
                 if(ans<tmp) ans=tmp;

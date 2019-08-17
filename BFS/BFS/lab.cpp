@@ -21,12 +21,12 @@ int main() {
     int n, m;
     cin >> n >> m;
     
-    int** lab = new int*[n];
-    for(int i=0; i<n; i++) lab[i] = new int[m];
-    
     vector<pair<int,int>> safeZone;
     queue<pair<int,int>> q;
+    
+    int** lab = new int*[n];
     for(int i=0; i<n; i++) {
+        lab[i] = new int[m];
         for(int j=0; j<m; j++) {
             cin >> lab[i][j];
             if(lab[i][j]==SAFE) safeZone.push_back({i,j});
@@ -39,11 +39,10 @@ int main() {
     for(int i=0; i<size; i++) {
         for(int j=i+1; j<size; j++) {
             for(int k=j+1; k<size; k++) {
-                int** temp = new int*[n];
                 queue<pair<int,int>> tempQ = q;
-                
-                for(int l=0; l<n; l++) temp[l]=new int[m];
+                int** temp = new int*[n];
                 for(int p=0; p<n; p++) {
+                    temp[p]=new int[m];
                     for(int q=0; q<m; q++) {
                         temp[p][q]=lab[p][q];
                     }

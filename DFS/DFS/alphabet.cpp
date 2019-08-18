@@ -26,7 +26,6 @@ int bfs(int* visited, stack<pair<int,int>> s, int ans) {
     while(!s.empty()) {
         int x = s.top().first;
         int y = s.top().second;
-        if(visited[map[x][y]-'A']==1) break;
         
         temp[map[x][y]-'A']=1;
         s.pop();
@@ -34,26 +33,22 @@ int bfs(int* visited, stack<pair<int,int>> s, int ans) {
         
         if(isInRange(x+1,y) && visited[map[x+1][y]-'A']==0) {
             s.push({x+1,y});
-            int tmp = bfs(temp,s,ans);
-            ans = (ans<=tmp)? tmp:ans;
+            ans = bfs(temp,s,ans);
             temp = visited;
         }
         if(isInRange(x-1,y) && visited[map[x-1][y]-'A']==0) {
             s.push({x-1,y});
-            int tmp = bfs(temp,s,ans);
-            ans = (ans<=tmp)? tmp:ans;
+            ans = bfs(temp,s,ans);
             temp = visited;
         }
         if(isInRange(x,y+1) && visited[map[x][y+1]-'A']==0) {
             s.push({x,y+1});
-            int tmp = bfs(temp,s,ans);
-            ans = (ans<=tmp)? tmp:ans;
+            bfs(temp,s,ans);
             temp = visited;
         }
         if(isInRange(x,y-1) && visited[map[x][y-1]-'A']==0) {
             s.push({x,y-1});
-            int tmp = bfs(temp,s,ans);
-            ans = (ans<=tmp)? tmp:ans;
+            bfs(temp,s,ans);
             temp = visited;
         }
     }

@@ -14,14 +14,17 @@ using namespace std;
 
 int r, c;
 char** map;
+int** route;
+stack<pair<int,int>> s;
 
 bool isInRange(int x, int y) {
     if(x>=0 && x<r && y>=0 && y<c) return true;
     return false;
 }
 
-int bfs(int* visited, stack<pair<int,int>> s, int ans) {
-    int* temp = visited;
+void bfs(int* visited, int ans) {
+    int temp[26];
+    for(int i=0; i<26; i++) temp[i]=visited[i];
     
     while(!s.empty()) {
         int x = s.top().first;
@@ -30,46 +33,53 @@ int bfs(int* visited, stack<pair<int,int>> s, int ans) {
         temp[map[x][y]-'A']=1;
         s.pop();
         ans++;
+        route[x][y]=ans;
         
-        if(isInRange(x+1,y) && visited[map[x+1][y]-'A']==0) {
+        if(isInRange(x+1,y) && temp[map[x+1][y]-'A']==0) {
             s.push({x+1,y});
-            ans = bfs(temp,s,ans);
-            temp = visited;
+            bfs(temp,ans);
         }
-        if(isInRange(x-1,y) && visited[map[x-1][y]-'A']==0) {
+        if(isInRange(x-1,y) && temp[map[x-1][y]-'A']==0) {
             s.push({x-1,y});
-            ans = bfs(temp,s,ans);
-            temp = visited;
+            bfs(temp,ans);
         }
-        if(isInRange(x,y+1) && visited[map[x][y+1]-'A']==0) {
+        if(isInRange(x,y+1) && temp[map[x][y+1]-'A']==0) {
             s.push({x,y+1});
-            bfs(temp,s,ans);
-            temp = visited;
+            bfs(temp,ans);
         }
-        if(isInRange(x,y-1) && visited[map[x][y-1]-'A']==0) {
+        if(isInRange(x,y-1) && temp[map[x][y-1]-'A']==0) {
             s.push({x,y-1});
-            bfs(temp,s,ans);
-            temp = visited;
+            bfs(temp,ans);
         }
     }
-    return ans;
 }
 
 int main() {
     cin >> r >> c;
     
     map = new char* [r];
+    route = new int* [r];
     for(int i=0; i<r; i++) {
         map[i] = new char[c];
+        route[i] = new int[c]();
         for(int j=0; j<c; j++) {
             cin >> map[i][j];
         }
     }
     
     int visited[26] = {0};
-    stack<pair<int,int>> s;
     
     s.push({0,0});
-    int ans = 0;
-    cout << bfs(visited, s, ans);
+    int ans=0;
+    bfs(visited, ans);
+    
+    int max=0;
+    for(int i=0; i<r; i++) {
+        for(int j=0; j<c; j++) {
+            cout << route[i][j];
+            max = max<route[i][j] ? route[i][j] : max;
+        }
+        cout << endl;
+    }
+    cout << max;
 }

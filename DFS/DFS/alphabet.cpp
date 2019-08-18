@@ -26,6 +26,8 @@ int bfs(int* visited, stack<pair<int,int>> s, int ans) {
     while(!s.empty()) {
         int x = s.top().first;
         int y = s.top().second;
+        if(visited[map[x][y]-'A']==1) break;
+        
         temp[map[x][y]-'A']=1;
         s.pop();
         ans++;

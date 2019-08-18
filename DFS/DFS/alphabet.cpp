@@ -24,7 +24,7 @@ bool isInRange(int x, int y) {
 
 void bfs(int* visited, int ans) {
     int temp[26];
-    for(int i=0; i<26; i++) temp[i]=visited[i];
+     for(int i=0; i<26; i++) temp[i]=visited[i];
     
     while(!s.empty()) {
         int x = s.top().first;
@@ -33,7 +33,7 @@ void bfs(int* visited, int ans) {
         temp[map[x][y]-'A']=1;
         s.pop();
         ans++;
-        route[x][y]=ans;
+        route[x][y] = ans<route[x][y]?route[x][y]:ans;
         
         if(isInRange(x+1,y) && temp[map[x+1][y]-'A']==0) {
             s.push({x+1,y});
@@ -76,10 +76,8 @@ int main() {
     int max=0;
     for(int i=0; i<r; i++) {
         for(int j=0; j<c; j++) {
-            cout << route[i][j];
             max = max<route[i][j] ? route[i][j] : max;
         }
-        cout << endl;
     }
     cout << max;
 }

@@ -12,7 +12,6 @@
 #include <vector>
 #include <set>
 #include <queue>
-#include <stdlib>
 using namespace std;
 
 class Relation{
@@ -25,6 +24,7 @@ public:
 
 int solution(vector<vector<string>> relation) {
     int answer=0;
+    
     int colNum = relation[0].size();
     int rowNum = relation.size();
     
@@ -36,37 +36,31 @@ int solution(vector<vector<string>> relation) {
         string front=q.front();
         q.pop();
         
+        int flag=0;
+        for(int i=0; i<candidate.size(); i++) {
+            if(candidate[i].find(front)==string::npos) flag=1;
+        }
+        if(flag==1) continue;
+        
+        string temp="";
         for(int i=0; i<front.length(); i++) {
             set<string> s;
-            int colIdx = front[i]-'0';
             
             for(int j=0; j<rowNum; j++) {
-                s.insert(relation[j][colIdx]);
+                temp += relation[j][i];
+                s.insert(temp);
             }
             if(s.size()==rowNum) {
-                candidate[i]=1;
-                answer++;
+                candidate.push_back(temp);
             }
         }
-    }
-    
-    /*
-    int rowNum = relation.size();
-    int* candidate = new int[colNum]();
-    
-    for(int i=0; i<colNum; i++) {
-        set<string> s;
-        for(int j=0; j<rowNum; j++) {
-            s.insert(relation[j][i]);
+        
+        for(int i=front[front.size()-1]-'0'+1; i<colNum; i++) {
+            temp += to_string(i);
         }
-        if(s.size()==rowNum) {
-            candidate[i]=1;
-            answer++;
-        }
+        q.push(temp);
     }
-    */
-    
-    
+    answer = candidate.size();
     return answer;
 }
 

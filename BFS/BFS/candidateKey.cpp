@@ -11,6 +11,8 @@
 #include <string>
 #include <vector>
 #include <set>
+#include <queue>
+#include <stdlib>
 using namespace std;
 
 class Relation{
@@ -23,8 +25,32 @@ public:
 
 int solution(vector<vector<string>> relation) {
     int answer=0;
-    
     int colNum = relation[0].size();
+    int rowNum = relation.size();
+    
+    queue<string> q;
+    vector<string> candidate;
+    for(int i=0; i<colNum; i++) q.push(to_string(i));
+    
+    while(!q.empty()) {
+        string front=q.front();
+        q.pop();
+        
+        for(int i=0; i<front.length(); i++) {
+            set<string> s;
+            int colIdx = front[i]-'0';
+            
+            for(int j=0; j<rowNum; j++) {
+                s.insert(relation[j][colIdx]);
+            }
+            if(s.size()==rowNum) {
+                candidate[i]=1;
+                answer++;
+            }
+        }
+    }
+    
+    /*
     int rowNum = relation.size();
     int* candidate = new int[colNum]();
     
@@ -38,7 +64,7 @@ int solution(vector<vector<string>> relation) {
             answer++;
         }
     }
-    
+    */
     
     
     return answer;

@@ -40,6 +40,7 @@ int solution(vector<vector<string>> relation) {
             
             for(int j=0; j<front.size(); j++) {
                 temp += relation[i][front[j]-'0'];
+                temp += " ";
             }
             s.insert(temp);
         }

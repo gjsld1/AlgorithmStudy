@@ -14,14 +14,6 @@
 #include <queue>
 using namespace std;
 
-class Relation{
-    vector<vector<string>> tuples;
-public:
-    void insert(vector<string> tuple) {
-        tuples.push_back(tuple);
-    }
-};
-
 int solution(vector<vector<string>> relation) {
     int answer=0;
     
@@ -42,21 +34,23 @@ int solution(vector<vector<string>> relation) {
         }
         if(flag==1) continue;
         
-        string temp="";
-        for(int i=0; i<front.length(); i++) {
-            set<string> s;
+        string temp;
+        set<string> s;
+        for(int i=0; i<rowNum; i++) {
+            temp="";
             
-            for(int j=0; j<rowNum; j++) {
-                temp += relation[j][i];
-                s.insert(temp);
+            for(int j=0; j<front.size(); j++) {
+                temp += relation[i][front[j]-'0'];
             }
-            if(s.size()==rowNum) {
-                candidate.push_back(temp);
-            }
+            s.insert(temp);
+        }
+        
+        if(s.size()==rowNum) {
+            candidate.push_back(temp);
         }
         
         for(int i=front[front.size()-1]-'0'+1; i<colNum; i++) {
-            temp += to_string(i);
+            front += to_string(i);
         }
         q.push(temp);
     }
@@ -65,13 +59,13 @@ int solution(vector<vector<string>> relation) {
 }
 
 int main() {
-    Relation relation;
-    relation.insert({"100","ryan","music","2"});
-    relation.insert({"200","apeach","math","2"});
-    relation.insert({"300","tube","computer","3"});
-    relation.insert({"400","con","computer","1"});
-    relation.insert({"500","muzi","music","3"});
-    relation.insert({"600","ryan","music","2"});
+    vector<vector<string>> v;
+    v.push_back({"100","ryan","music","2"});
+    v.push_back({"200","apeach","math","2"});
+    v.push_back({"300","tube","computer","3"});
+    v.push_back({"400","con","computer","1"});
+    v.push_back({"500","muzi","music","3"});
+    v.push_back({"600","ryan","music","2"});
     
-    
+    cout << solution(v);
 }

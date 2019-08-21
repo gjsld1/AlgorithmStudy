@@ -30,14 +30,13 @@ int solution(vector<vector<string>> relation) {
         
         int flag=0;
         for(int i=0; i<candidate.size(); i++) {
-            if(candidate[i].find(front)==string::npos) flag=1;
+            if(front.find(candidate[i])!=string::npos) flag=1;
         }
         if(flag==1) continue;
         
-        string temp;
         set<string> s;
         for(int i=0; i<rowNum; i++) {
-            temp="";
+            string temp="";
             
             for(int j=0; j<front.size(); j++) {
                 temp += relation[i][front[j]-'0'];
@@ -46,13 +45,15 @@ int solution(vector<vector<string>> relation) {
         }
         
         if(s.size()==rowNum) {
-            candidate.push_back(temp);
+            candidate.push_back(front);
         }
-        
-        for(int i=front[front.size()-1]-'0'+1; i<colNum; i++) {
-            front += to_string(i);
+        else {
+            for(int i=front[front.size()-1]-'0'+1; i<colNum; i++) {
+                string tmp = front;
+                tmp += to_string(i);
+                q.push(tmp);
+            }
         }
-        q.push(temp);
     }
     answer = candidate.size();
     return answer;
@@ -65,7 +66,7 @@ int main() {
     v.push_back({"300","tube","computer","3"});
     v.push_back({"400","con","computer","1"});
     v.push_back({"500","muzi","music","3"});
-    v.push_back({"600","ryan","music","2"});
+    v.push_back({"600","apeach","music","2"});
     
     cout << solution(v);
 }

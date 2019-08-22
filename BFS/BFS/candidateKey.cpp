@@ -29,7 +29,14 @@ int solution(vector<vector<string>> relation) {
         
         int flag=0;
         for(int i=0; i<candidate.size(); i++) {
-            if(front.find(candidate[i])!=string::npos) flag=1;
+            int temp=0;
+            for(int j=0; j<candidate[i].size(); j++) {
+                if(front.find(candidate[i][j])!=string::npos) temp++;
+            }
+            if(temp==candidate[i].size()) {
+                flag=1;
+                break;
+            }
         }
         if(flag==1) continue;
         
@@ -37,15 +44,11 @@ int solution(vector<vector<string>> relation) {
         for(int i=0; i<rowNum; i++) {
             string temp="";
             
-            for(int j=0; j<front.size(); j++) {
-                temp += relation[i][front[j]-'0'];
-            }
+            for(int j=0; j<front.size(); j++) temp += relation[i][front[j]-'0'];
             s.insert(temp);
         }
         
-        if(s.size()==rowNum) {
-            candidate.push_back(front);
-        }
+        if(s.size()==rowNum) candidate.push_back(front);
         else {
             for(int i=front[front.size()-1]-'0'+1; i<colNum; i++) {
                 string tmp = front;
@@ -54,12 +57,15 @@ int solution(vector<vector<string>> relation) {
             }
         }
     }
+    
+    for(int i=0; i<candidate.size(); i++) cout << candidate[i] << endl;
     answer = candidate.size();
     return answer;
 }
 
 int main() {
     vector<vector<string>> v;
+    
     v.push_back({"100","ryan","music","2"});
     v.push_back({"200","apeach","math","2"});
     v.push_back({"300","tube","computer","3"});
@@ -67,47 +73,14 @@ int main() {
     v.push_back({"500","muzi","music","3"});
     v.push_back({"600","apeach","music","2"});
     
+    /*
+    v.push_back({"100", "C언어", "80", "민서"});
+    v.push_back({"200", "Java", "80", "재중"});
+    v.push_back({"100", "Java", "80", "민서"});
+    v.push_back({"300", "자료구조", "55", "유천"});
+    v.push_back({"400", "파일처리", "95", "준수"});
+    v.push_back({"500", "데이터베이스", "60", "창민"});
+    v.push_back({"600", "C언어", "75", "윤호"});
+    */
     cout << solution(v);
 }
-
-/* using vector 42.9%
- 
-int solution(vector<vector<string>> relation) {
-    int answer=0;
-    
-    int colNum = relation[0].size();
-    int rowNum = relation.size();
-    
-    queue<vector<int>> q;
-    vector<vector<int>> candidate;
-    for(int i=0; i<colNum; i++) q.push({i});
-    ㅍ
-    while(!q.empty()) {
-        vector<int> front=q.front();
-        q.pop();
-        
-        set<vector<string>> s;
-        for(int i=0; i<rowNum; i++) {
-            vector<string> temp;
-            
-            for(int j=0; j<front.size(); j++) {
-                temp.push_back(relation[i][front[j]]);
-            }
-            s.insert(temp);
-        }
-        
-        if(s.size()==rowNum) {
-            candidate.push_back(front);
-        }
-        else {
-            for(int i=front[front.size()-1]+1; i<colNum; i++) {
-                vector<int> tmp = front;
-                tmp.push_back(i);
-                q.push(tmp);
-            }
-        }
-    }
-    answer = candidate.size();
-    return answer;
-}
-*/

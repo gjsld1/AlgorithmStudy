@@ -58,7 +58,6 @@ int solution(vector<vector<string>> relation) {
         }
     }
     
-    for(int i=0; i<candidate.size(); i++) cout << candidate[i] << endl;
     answer = candidate.size();
     return answer;
 }

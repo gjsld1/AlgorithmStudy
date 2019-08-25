@@ -23,12 +23,8 @@ string checkTrue(long sYear, long long eYear) {
     
     long long year = sYear+1;
     while(year<eYear) {
-        if(mapR[year]==0) {
-            ans = "maybe";
-            continue;
-        }
-        
-        if(mapR[year]>=mapR[eYear]) return "false";
+        if(mapR[year]==0) ans="maybe";
+        else if(mapR[year]>=mapR[eYear]) return "false";
         year++;
     }
     

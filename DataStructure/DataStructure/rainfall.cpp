@@ -21,6 +21,18 @@ string checkTrue(long sYear, long long eYear) {
     if(mapR[eYear]==0) return "maybe";
     if(mapR[sYear]==0) ans="maybe";
     
+    long long year = sYear+1;
+    while(year<eYear) {
+        if(mapR[year]==0) {
+            ans = "maybe";
+            continue;
+        }
+        
+        if(mapR[year]>=mapR[eYear]) return "false";
+        year++;
+    }
+    
+    /*
     map<long long, long long>::iterator iter = mapR.begin();
     while(iter->first <= sYear) iter++;
     if(iter->first==eYear) return "maybe";
@@ -31,14 +43,7 @@ string checkTrue(long sYear, long long eYear) {
     long long tp = max_element(iter,it, [](const pair<long long, long long>& p1, const pair<long long, long long>& p2) {
         return p1.second < p2.second; })->second;
     if(tp >= mapR[eYear]) return "false";
-    
-    /*
-    while(iter->first < eYear) {
-        map<long long, long long>::iterator temp = iter;
-        if((++temp)->first - iter->first>1) ans="maybe";
-        if(iter++->second >= mapR[eYear]) return "false";
-    }
-     */
+    */
     return ans;
 }
 

@@ -39,7 +39,7 @@ int main() {
         for(int i=0; i<connet[front].size(); i++) {
             if(--inDegree[connet[front][i]]==0) q.push(connet[front][i]);
         }
-        cout << front;
+        cout << front <<" ";
     }
     
     //if(n==1) cout << "1";

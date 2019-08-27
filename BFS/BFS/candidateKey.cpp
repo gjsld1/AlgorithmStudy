@@ -6,6 +6,7 @@
 //  Created by 신예지 on 19/08/2019.
 //  Copyright © 2019 신예지. All rights reserved.
 //
+/*
 #include <iostream>
 #include <string>
 #include <vector>
@@ -60,6 +61,36 @@ int solution(vector<vector<string>> relation) {
     
     answer = candidate.size();
     return answer;
+}
+*/
+
+#include <iostream>
+#include <vector>
+#include <set>
+#include <bitset>
+using namespace std;
+bool possi(vector<int> &vec,int now){
+    for(int i=0;i<vec.size();i++)
+        if((vec[i]&now)==vec[i])return false;
+    return true;
+}
+int solution(vector<vector<string>> relation) {
+    int n=relation.size();
+    int m=relation[0].size();
+    vector<int> ans;
+    for(int i=1;i<(1<<m);i++){
+        cout << i << endl;
+        set<string> s;
+        for(int j=0;j<n;j++){
+            string now="";
+            for(int k=0;k<m;k++){
+                if(i&(1<<k))now+=relation[j][k];
+            }
+            s.insert(now);
+        }
+        if(s.size()==n&&possi(ans,i))ans.push_back(i);
+    }
+    return ans.size();
 }
 
 int main() {

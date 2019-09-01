@@ -63,7 +63,6 @@ int solution(vector<vector<string>> relation) {
     return answer;
 }
 */
-
 #include <iostream>
 #include <vector>
 #include <set>
@@ -77,9 +76,10 @@ bool possi(vector<int> &vec,int now){
 int solution(vector<vector<string>> relation) {
     int n=relation.size();
     int m=relation[0].size();
+    
     vector<int> ans;
     for(int i=1;i<(1<<m);i++){
-        cout << i << endl;
+        cout << bitset<32>(i) << endl;
         set<string> s;
         for(int j=0;j<n;j++){
             string now="";
@@ -95,7 +95,7 @@ int solution(vector<vector<string>> relation) {
 
 int main() {
     vector<vector<string>> v;
-    
+
     v.push_back({"100","ryan","music","2"});
     v.push_back({"200","apeach","math","2"});
     v.push_back({"300","tube","computer","3"});
@@ -112,5 +112,6 @@ int main() {
     v.push_back({"500", "데이터베이스", "60", "창민"});
     v.push_back({"600", "C언어", "75", "윤호"});
     */
+    
     cout << solution(v);
 }

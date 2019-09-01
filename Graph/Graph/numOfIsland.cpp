@@ -15,6 +15,8 @@ using namespace std;
 #define SEA 0
 #define LAND 1
 
+int w, h;
+
 bool isInRange(int x, int y, int w, int h){
     if(x>=0&&x<w && y>=0&&y<h) return true;
     return false;
@@ -22,7 +24,6 @@ bool isInRange(int x, int y, int w, int h){
 
 int main() {
     while(1) {
-        int w, h;
         cin >> w >> h;
         if(w==0 || h==0) break;
         
@@ -47,18 +48,25 @@ int main() {
             q.pop();
             
             if(visited[x][y]==1) continue;
-            
-            visited[x][y]=1;
-            if(isInRange(x,y-1,w,h) && visited[x][y-1]==0) visited[x][y-1]=1;
-            if(isInRange(x,y+1,w,h) && visited[x][y+1]==0) visited[x][y+1]=1;
-            if(isInRange(x-1,y,w,h) && visited[x-1][y]==0) visited[x-1][y]=1;
-            if(isInRange(x-1,y-1,w,h) && visited[x-1][y-1]==0) visited[x-1][y-1]=1;
-            if(isInRange(x-1,y+1,w,h) && visited[x-1][y+1]==0) visited[x-1][y+1]=1;
-            if(isInRange(x+1,y,w,h) && visited[x+1][y]==0) visited[x+1][y]=1;
-            if(isInRange(x+1,y-1,w,h) && visited[x+1][y-1]==0) visited[x+1][y-1]=1;
-            if(isInRange(x+1,y+1,w,h) && visited[x+1][y+1]==0) visited[x+1][y+1]=1;
             ans++;
         }
         cout << ans << endl;
     }
+}
+
+int dfs(int** visited, queue<pair<int,int>> q, int ans, int x, int y) {
+    if(visited[x][y]==1) return ans;
+    visited[x][y]=1;
+    
+    if(isInRange(x,y-1,w,h) && visited[x][y-1]==0) dfs(visited, q, ans, x, y-1);
+    if(isInRange(x,y+1,w,h) && visited[x][y+1]==0) visited[x][y+1]=1;
+    if(isInRange(x-1,y,w,h) && visited[x-1][y]==0) visited[x-1][y]=1;
+    if(isInRange(x-1,y-1,w,h) && visited[x-1][y-1]==0) visited[x-1][y-1]=1;
+    if(isInRange(x-1,y+1,w,h) && visited[x-1][y+1]==0) visited[x-1][y+1]=1;
+    if(isInRange(x+1,y,w,h) && visited[x+1][y]==0) visited[x+1][y]=1;
+    if(isInRange(x+1,y-1,w,h) && visited[x+1][y-1]==0) visited[x+1][y-1]=1;
+    if(isInRange(x+1,y+1,w,h) && visited[x+1][y+1]==0) visited[x+1][y+1]=1;
+    ans++;
+    
+    return ans;
 }

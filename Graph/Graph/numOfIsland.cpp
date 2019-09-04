@@ -18,7 +18,7 @@ using namespace std;
 int w, h;
 
 bool isInRange(int x, int y, int w, int h){
-    if(x>=0&&x<w && y>=0&&y<h) return true;
+    if(x>=0&&x<h && y>=0&&y<w) return true;
     return false;
 }
 
@@ -41,13 +41,13 @@ int main() {
         cin >> w >> h;
         if(w==0 || h==0) break;
         
-        int** board = new int*[w];
-        int** visited = new int*[w];
+        int** board = new int*[h];
+        int** visited = new int*[h];
         queue<pair<int,int>> q;
         
         for(int i=0; i<h; i++) {
-            board[i] = new int[h];
-            visited[i] = new int[h]();
+            board[i] = new int[w];
+            visited[i] = new int[w]();
             
             for(int j=0; j<h; j++) {
                 cin >> board[i][j];

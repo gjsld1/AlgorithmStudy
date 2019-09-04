@@ -21,18 +21,18 @@ bool isInRange(int x, int y, int w, int h){
     return false;
 }
 
-void dfs(int** board, int** visited, int x, int y, int group) {
+void dfs(int** board, int** visited, int x, int y) {
     if(visited[x][y]==1 || board[x][y]==SEA) return;
     visited[x][y]=1;
     
-    if(isInRange(x,y-1,w,h) && visited[x][y-1]==0) dfs(board, visited, x, y-1, 1);
-    if(isInRange(x,y+1,w,h) && visited[x][y+1]==0) dfs(board, visited, x, y+1, 1);
-    if(isInRange(x-1,y,w,h) && visited[x-1][y]==0) dfs(board, visited, x-1, y, 1);
-    if(isInRange(x-1,y-1,w,h) && visited[x-1][y-1]==0) dfs(board, visited, x-1, y-1, 1);
-    if(isInRange(x-1,y+1,w,h) && visited[x-1][y+1]==0) dfs(board, visited, x-1, y+1, 1);
-    if(isInRange(x+1,y,w,h) && visited[x+1][y]==0) dfs(board, visited, x+1, y, 1);
-    if(isInRange(x+1,y-1,w,h) && visited[x+1][y-1]==0) dfs(board, visited, x+1, y-1, 1);
-    if(isInRange(x+1,y+1,w,h) && visited[x+1][y+1]==0) dfs(board, visited, x+1, y+1, 1);
+    if(isInRange(x,y-1,w,h) && visited[x][y-1]==0) dfs(board, visited, x, y-1);
+    if(isInRange(x,y+1,w,h) && visited[x][y+1]==0) dfs(board, visited, x, y+1);
+    if(isInRange(x-1,y,w,h) && visited[x-1][y]==0) dfs(board, visited, x-1, y);
+    if(isInRange(x-1,y-1,w,h) && visited[x-1][y-1]==0) dfs(board, visited, x-1, y-1);
+    if(isInRange(x-1,y+1,w,h) && visited[x-1][y+1]==0) dfs(board, visited, x-1, y+1);
+    if(isInRange(x+1,y,w,h) && visited[x+1][y]==0) dfs(board, visited, x+1, y);
+    if(isInRange(x+1,y-1,w,h) && visited[x+1][y-1]==0) dfs(board, visited, x+1, y-1);
+    if(isInRange(x+1,y+1,w,h) && visited[x+1][y+1]==0) dfs(board, visited, x+1, y+1);
 }
 
 int main() {
@@ -61,7 +61,7 @@ int main() {
             q.pop();
             
             if(visited[x][y]==1) continue;
-            dfs(board, visited, x, y, 0);
+            dfs(board, visited, x, y);
             ans++;
         }
         cout << ans << endl;

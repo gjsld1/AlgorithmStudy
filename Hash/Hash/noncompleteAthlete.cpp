@@ -19,13 +19,16 @@ string solution(vector<string> participant, vector<string> completion) {
     sort(participant.begin(), participant.end());
     sort(completion.begin(), completion.end());
     
-    for(int i=0; i<completion.size(); i++) {
-        if(binary_search(participant.begin(), participant.end(), completion[i])) {
-            participant.erase(find(participant.begin(), participant.end(), completion[i]));
+    for(int i=0; i<participant.size(); i++) {
+        if(binary_search(completion.begin(), completion.end(), participant[i])) {
+            completion.erase(find(completion.begin(), completion.end(), participant[i]));
+        }
+        else {
+            answer = participant[i];
+            break;
         }
     }
     
-    answer = participant[0];
     return answer;
 }
 

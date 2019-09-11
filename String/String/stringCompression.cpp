@@ -45,4 +45,3 @@ int solution(string s) {
 int main() {
     cout << solution("aabbaccc");
 }
-

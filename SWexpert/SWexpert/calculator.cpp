@@ -19,16 +19,15 @@ int main() {
         cin >> n;
         int* num = new int[n];
         
-        int sum;
-        for(int j=0; j<n; j++) {
+        cin >> num[0];
+        int sum = num[0];
+        
+        for(int j=1; j<n; j++) {
             cin >> num[j];
             
-            if(j==1) sum = (num[0]*num[1])>(num[0]+num[1])? num[0]*num[1] : num[0]+num[1];
-            else if(j>1) {
-                if(num[j]==0) continue;
-                else if(num[j]==1) sum++;
-                else sum*=num[j];
-            }
+            if(sum==0 || num[j]==0) continue;
+            else if(sum==1 || num[j]==1) sum+=num[j];
+            else sum*=num[j];
         }
         
         cout << "#"<< i+1 << " " << sum << endl;

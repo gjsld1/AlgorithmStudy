@@ -8,6 +8,7 @@
 //
 
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 
 int main() {
@@ -16,14 +17,15 @@ int main() {
     
     for(int i=0; i<tc; i++) {
         int n;
-        cin >> n;
+        scanf("%d", &n);
         int* num = new int[n];
         
-        cin >> num[0];
-        int sum = num[0];
+        int sum;
+        scanf("%d", &sum);
+        num[0]=sum;
         
         for(int j=1; j<n; j++) {
-            cin >> num[j];
+            scanf("%d", &num[j]);
             
             if(sum==0 || num[j]==0) continue;
             else if(sum==1 || num[j]==1) sum+=num[j];

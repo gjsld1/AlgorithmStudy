@@ -7,18 +7,18 @@
 //  Copyright © 2019 신예지. All rights reserved.
 //
 
-#include <iostream>
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-using namespace std;
+#include <stdlib.h>
 
 int main() {
     int tc;
-    cin >> tc;
+    scanf("%d",&tc);
     
     for(int i=0; i<tc; i++) {
         int n;
         scanf("%d", &n);
-        int* num = new int[n];
+        int* num = (int*) malloc(sizeof(int)*n);
         
         int sum;
         scanf("%d", &sum);
@@ -32,6 +32,6 @@ int main() {
             else sum*=num[j];
         }
         
-        cout << "#"<< i+1 << " " << sum << endl;
+        printf("#%d %d",i+1,sum);
     }
 }

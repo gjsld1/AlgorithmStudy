@@ -20,10 +20,10 @@ int main() {
         cin >> n;
         
         int lineOddCount = 2*n-1;
-        int beforeOddCount = pow((lineOddCount-1)/2,2);
+        long int beforeOddCount = pow((lineOddCount-1)/2,2);
         
-        int lineStart = 2*beforeOddCount+1;
-        int lineEnd = lineStart+(2*(lineOddCount-1));
+        long int lineStart = 2*beforeOddCount+1;
+        long int lineEnd = lineStart+(2*(lineOddCount-1));
         
         cout << "#" << i+1 << " " << lineStart << " " << lineEnd << endl;
     }

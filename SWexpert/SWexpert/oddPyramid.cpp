@@ -8,7 +8,6 @@
 //
 
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 int main() {
@@ -16,14 +15,14 @@ int main() {
     cin >> tc;
     
     for(int i=0; i<tc; i++) {
-        int n;
+        long long n;
         cin >> n;
         
-        int lineOddCount = 2*n-1;
-        long int beforeOddCount = pow((lineOddCount-1)/2,2);
+        long long lineOddCount = 2*n-1;
+        long long beforeOddCount = ((lineOddCount-1)/2) * ((lineOddCount-1)/2);
         
-        long int lineStart = 2*beforeOddCount+1;
-        long int lineEnd = lineStart+(2*(lineOddCount-1));
+        long long lineStart = 2*beforeOddCount+1;
+        long long lineEnd = lineStart+(2*(lineOddCount-1));
         
         cout << "#" << i+1 << " " << lineStart << " " << lineEnd << endl;
     }

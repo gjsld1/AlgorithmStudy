@@ -11,14 +11,38 @@
 #include <utility>
 using namespace std;
 
-pair<int, int> nextCoordinate (int n, int x, int y, int direction) {
-    pair<int,int> next;
+pair<int, int> nextCoordinate (int start, int n, int x, int y, int direction, int cnt) {
+    while(cnt!=0) {
+        cnt--;
+        
+        switch (direction) {
+            case -1:
+                if(x==start && y==start) x++;
+                else if(x==start && y==n-start-1) x--;
+                else if(x==n-start-1 && y==start) y++;
+                else if(x==n-start-1 && y==n-start-1) x--;
+                
+                else if(x==start) y--;
+                else if(x==n-start-1) y++;
+                else if(y==start) x++;
+                else if(y==n-start-1) x--;
+                break;
+                
+            case 1:
+                if(x==start && y==start) y++;
+                else if(x==start && y==n-start-1) x++;
+                else if(x==n-start-1 && y==start) x--;
+                else if(x==n-start-1 && y==n-start-1) y--;
+                
+                else if(x==start) y++;
+                else if(x==n-start-1) y--;
+                else if(y==start) x--;
+                else if(y==n-start-1) x++;
+                break;
+        }
+    }
     
-    next.first = x;
-    next.second = y;
-    
-    
-    return next;
+    return {x,y};
 }
 
 int main() {
@@ -26,16 +50,21 @@ int main() {
     cin >> n >> w;
     
     string** board = new string*[n];
+    string** ans = new string*[n];
     for(int i=0; i<n; i++) {
         board[i] = new string[n];
+        ans[i] = new string[n];
         
         for(int j=0; j<n; j++) cin >> board[i][j];
     }
     
     if(n%2==0) {
         int tmp=n;
-        int start=0;
+        int direction = 1;
+        
         while(tmp>1) {
+            int start=0;
+            //how to find n?
             
         }
     }

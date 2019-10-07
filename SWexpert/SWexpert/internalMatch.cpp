@@ -7,6 +7,7 @@
 //  Copyright © 2019 신예지. All rights reserved.
 //
 
+/*
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -135,5 +136,68 @@ int main() {
             }
         }
         cout << "#" << l+1 << " " << ans << endl;
+    }
+}
+*/
+
+#include <iostream>
+#include <string>
+#include <map>
+#include <set>
+using namespace std;
+
+map<string, set<string>> m;
+map<string, int> s;
+
+bool dfs(string e, string par, int ch) {
+    s[e]=ch;
+    
+    for(auto a : m[e]) {
+        if(a==par) continue;
+        //한 번도 가지 않은 정점일 경우
+        if(!s[a]) {
+            //이전 정점이 1일 경우
+            if(ch==1) {
+                //현재 정점은 2여야만 함
+                if(!dfs(a,e,2)) return false;
+            }
+            else {
+                //그 반대
+                if(!dfs(a,e,1)) return false;
+            }
+        }
+        //만약 다른 정점이 이미 순회되어 있다면
+        else {
+            if(ch==s[a]) return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+    int t, c=1;
+    cin >> t;
+    string root;
+    while(t--) {
+        int n;
+        cin >> n;
+        
+        for(int i=0; i<n; i++) {
+            string a, b;
+            cin >> a >> b;
+            if(m.empty()) root=a;
+            m[a].insert(b);
+            m[b].insert(a);
+        }
+        
+        bool a = dfs(root,"",1);
+        s.clear();
+        bool b = dfs(root,"",2);
+        s.clear();
+        cout << "#" << c++ << " ";
+        if(a||b) cout << "Yes" << endl; //둘 중에 하나라도 만족하면 yes
+        else cout << "No" << endl;  //no
+        m.clear();
     }
 }

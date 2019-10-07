@@ -7,7 +7,6 @@
 //  Copyright © 2019 신예지. All rights reserved.
 //
 
-#include <stdio.h>
 #include <iostream>
 #include <string>
 #include <queue>
@@ -15,64 +14,64 @@
 #include <set>
 using namespace std;
 
-map<string, set<string> > v;
-map<string, int> chk;
+map<string,set<string>> info;
+map<string,int> check;
 
-bool bfs(string node)
-{
+bool bfs(string s) {
     queue<string> q;
-    queue<int> dir;
-    q.push(node);
-    dir.push(1);
-    chk[node] = 1;
-    while(!q.empty()){
+    queue<int> group;
+    check[s]=1;
+    q.push(s);
+    group.push(1);
+    
+    while(!q.empty()) {
         string now = q.front(); q.pop();
-        int d = dir.front(); dir.pop();
-        for(auto a: v[now]){
-            if(!chk[a]){
-                if(d == 1){
-                    q.push(a);
-                    dir.push(2);
-                    chk[a] = 2;
+        int nowG = group.front(); group.pop();
+        
+        for(auto a : info[now]) {
+            if(!check[a]) {
+                q.push(a);
+                if(nowG==1) {
+                    check[a]=2;
+                    group.push(2);
                 }
-                else{
-                    q.push(a);
-                    dir.push(1);
-                    chk[a] = 1;
+                else {
+                    check[a]=1;
+                    group.push(1);
                 }
             }
-            else{
-                if(chk[a] == d) return false;
+            else {
+                if(check[a]==nowG) return false;
             }
         }
     }
+    
     return true;
 }
 
-int main()
-{
-    int t;
-    cin >> t;
+int main() {
+    int tc;
+    cin >> tc;
     
-    for(int i=1; i<=t;i++){
-        int n;
-        cin >> n;
+    for(int i=1; i<=tc; i++) {
+        int k;
+        cin >> k;
         string root;
         
-        for(int p=0; p<n; p++){
+        for(int j=0; j<k; j++) {
             string a,b;
             cin >> a >> b;
             
-            v[a].insert(b);
-            v[b].insert(a);
-            if(p == 0) root=a;
+            if(info.empty()) root=a;
+            info[a].insert(b);
+            info[b].insert(a);
         }
         
         cout << "#" << i << " ";
-        if(!bfs(root)) cout << "No" << endl;
-        else cout << "Yes" << endl;
+        if(bfs(root)) cout << "Yes" << endl;
+        else cout << "No" << endl;
         
-        v.clear();
-        chk.clear();
+        info.clear();
+        check.clear();
     }
 }

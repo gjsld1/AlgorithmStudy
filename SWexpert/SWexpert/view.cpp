@@ -7,6 +7,8 @@
 //  Copyright © 2019 신예지. All rights reserved.
 //
 
+
+// 9/10
 #include <iostream>
 using namespace std;
 
@@ -24,16 +26,21 @@ int main() {
         for(int i=2; i<n-2; i++) {
             int view = heights[i];
             
-            if(heights[i]-heights[i-1]>0) view = view<heights[i]-heights[i-1] ? view : heights[i]-heights[i-1];
-            else continue;
-            if(heights[i]-heights[i-2]>0) view = view<heights[i]-heights[i-2] ? view : heights[i]-heights[i-2];
-            else continue;
-            if(heights[i]-heights[i+1]>0) view = view<heights[i]-heights[i+1] ? view : heights[i]-heights[i+1];
-            else continue;
-            if(heights[i]-heights[i+2]>0) view = view<heights[i]-heights[i+2] ? view : heights[i]-heights[i+2];
+            int temp=heights[i]-heights[i-1];
+            if(temp>0) view = view<temp ? view : temp;
             else continue;
             
-            if(view == heights[i]) view=0;
+            temp=heights[i]-heights[i-2];
+            if(temp>0) view = view<temp ? view : temp;
+            else continue;
+            
+            temp=heights[i]-heights[i+1];
+            if(temp>0) view = view<temp ? view : temp;
+            else continue;
+            
+            temp=heights[i]-heights[i+2];
+            if(temp>0) view = view<temp ? view : temp;
+            else continue;
             
             sum += view;
         }

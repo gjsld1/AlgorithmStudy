@@ -13,10 +13,10 @@
 using namespace std;
 
 string score;
-int n, ans;
+int num, ans;
 
-void dfs(int cur, int num) {
-    if(num==n) {
+void dfs(int cur, int n) {
+    if(n==num) {
         ans = max(ans, atoi(score.c_str()));
         return;
     }
@@ -25,7 +25,7 @@ void dfs(int cur, int num) {
             for(int j=i+1; j<score.size(); j++) {
                 if(score[i]<=score[j]) {
                     swap(score[i],score[j]);
-                    dfs(i, num+1);
+                    dfs(i,n+1);
                     swap(score[i],score[j]);
                 }
             }
@@ -37,8 +37,8 @@ int main() {
     int tc;
     cin >> tc;
     
-    for(int i=1; i<=tc; i++){
-        cin >> score >> n;
+    for(int i=1; i<=tc; i++) {
+        cin >> score >> num;
         ans=0;
         dfs(0,0);
         

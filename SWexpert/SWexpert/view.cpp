@@ -7,9 +7,8 @@
 //  Copyright © 2019 신예지. All rights reserved.
 //
 
-
-// 9/10
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -24,6 +23,11 @@ int main() {
         int sum=0;
         
         for(int i=2; i<n-2; i++) {
+            if(heights[i]>heights[i-1] && heights[i]>heights[i-2] && heights[i]>heights[i+1] && heights[i]>heights[i+2]) {
+                sum += min(heights[i]-heights[i-1], min(heights[i]-heights[i-2], min(heights[i]-heights[i+1],heights[i]-heights[i+2])));
+                i+=2;
+            }
+            /* 9/10
             int view = heights[i];
             
             int temp=heights[i]-heights[i-1];
@@ -43,6 +47,7 @@ int main() {
             else continue;
             
             sum += view;
+             */
         }
         cout << "#" << c++ << " " << sum << endl;
     }

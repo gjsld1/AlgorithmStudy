@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D43611502331301800E77802 /* internalMatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D436114F2331301800E77802 /* internalMatch.cpp */; };
+		D4A12B31234EE841004C2E77 /* maxPrize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4A12B30234EE841004C2E77 /* maxPrize.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		D436114F2331301800E77802 /* internalMatch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = internalMatch.cpp; sourceTree = "<group>"; };
+		D4837B02234B6602002DA117 /* view.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = view.cpp; sourceTree = "<group>"; };
+		D4A12B30234EE841004C2E77 /* maxPrize.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = maxPrize.cpp; sourceTree = "<group>"; };
 		D4C568C52328DEE0005E3143 /* SWexpert */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SWexpert; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4C568C82328DEE0005E3143 /* calculator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = calculator.cpp; sourceTree = "<group>"; };
 		D4E273BA232E228C00DE65A6 /* oddPyramid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = oddPyramid.cpp; sourceTree = "<group>"; };
@@ -62,6 +64,8 @@
 				D4C568C82328DEE0005E3143 /* calculator.cpp */,
 				D4E273BA232E228C00DE65A6 /* oddPyramid.cpp */,
 				D436114F2331301800E77802 /* internalMatch.cpp */,
+				D4837B02234B6602002DA117 /* view.cpp */,
+				D4A12B30234EE841004C2E77 /* maxPrize.cpp */,
 			);
 			path = SWexpert;
 			sourceTree = "<group>";
@@ -122,7 +126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D43611502331301800E77802 /* internalMatch.cpp in Sources */,
+				D4A12B31234EE841004C2E77 /* maxPrize.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

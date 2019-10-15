@@ -68,6 +68,7 @@ int main() {
         int** board = new int*[n];
         for(int j=0; j<n; j++) board[j] = new int[n]();
         
+        ans=0;
         dfs(board,0);
         cout << "#" << i << " " << ans << endl;
     }

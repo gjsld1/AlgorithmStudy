@@ -23,27 +23,35 @@ void dfs(int** board, int cur) {
     int** temp = new int* [n];
     for(int i=0; i<n; i++) {
         temp[i] = new int[n];
-        for(int j=0; j<n; j++) temp[i][j] = board[i][j];
+        for(int j=0; j<n; j++) {
+            temp[i][j] = board[i][j];
+        }
     }
     
     int flag=0;
     for(int j=0; j<n; j++) {
         if(temp[cur][j]==POSSIBLE) {
-            flag++;
             temp[cur][j]=QUEEN;
+            flag++;
             
-            for(int i=0; i<n; i++) {
-                temp[cur][i]=BLOCK;
-                temp[i][j]=BLOCK;
-            }
+            
             int tempX=cur, tempY=j;
-            while(--tempX>=0 && --tempY>=0) temp[tempX][tempY]=BLOCK;   //3사분면 방향
+            while(--tempX>=0) if(temp[tempX][tempY]==POSSIBLE) temp[tempX][tempY]=BLOCK;
             tempX=cur; tempY=j;
-            while(--tempX>=0 && ++tempY<n) temp[tempX][tempY]=BLOCK;    //1사분면 방향
+            while(++tempY<n) if(temp[tempX][tempY]==POSSIBLE) temp[tempX][tempY]=BLOCK;
             tempX=cur; tempY=j;
-            while(++tempX<n && --tempY>=0) temp[tempX][tempY]=BLOCK;    //4사분면 방향
+            while(--tempY>=0) if(temp[tempX][tempY]==POSSIBLE) temp[tempX][tempY]=BLOCK;
             tempX=cur; tempY=j;
-            while(++tempX<n && ++tempY<n) temp[tempX][tempY]=BLOCK; //2사분면 방향
+            while(++tempX<n) if(temp[tempX][tempY]==POSSIBLE) temp[tempX][tempY]=BLOCK;
+            
+            tempX=cur; tempY=j;
+            while(--tempX>=0 && --tempY>=0) if(temp[tempX][tempY]==POSSIBLE) temp[tempX][tempY]=BLOCK;   //3사분면 방향
+            tempX=cur; tempY=j;
+            while(--tempX>=0 && ++tempY<n) if(temp[tempX][tempY]==POSSIBLE) temp[tempX][tempY]=BLOCK;    //1사분면 방향
+            tempX=cur; tempY=j;
+            while(++tempX<n && --tempY>=0) if(temp[tempX][tempY]==POSSIBLE) temp[tempX][tempY]=BLOCK;    //4사분면 방향
+            tempX=cur; tempY=j;
+            while(++tempX<n && ++tempY<n) if(temp[tempX][tempY]==POSSIBLE) temp[tempX][tempY]=BLOCK; //2사분면 방향
             
             dfs(temp,cur+1);
             
@@ -53,7 +61,7 @@ void dfs(int** board, int cur) {
         }
     }
     if(flag==0) return;
-    if(cur==n-1 && flag==n) ans++;
+    if(flag!=0 && cur==n-1) ans++;
     
     return;
 }

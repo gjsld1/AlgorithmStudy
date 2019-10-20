@@ -12,7 +12,7 @@
 using namespace std;
 
 bool isInRange(int n, int i) {
-    if(i+4>=n) return false;
+    if(i+n>=8) return false;
     return true;
 }
 
@@ -24,7 +24,7 @@ bool isPalindrome(string str) {
     return true;
 }
 
-int howManyPalindrome(int board[8][8], int n) {
+int howManyPalindrome(char board[8][8], int n) {
     int ans=0;
     
     for(int i=0; i<8; i++) {
@@ -50,7 +50,7 @@ int main() {
         int n;
         cin >> n;
         
-        int board[8][8];
+        char board[8][8];
         for(int i=0; i<8; i++) {
             for(int j=0; j<8; j++) cin >> board[i][j];
         }

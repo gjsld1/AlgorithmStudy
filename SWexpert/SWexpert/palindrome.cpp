@@ -31,12 +31,12 @@ int howManyPalindrome(char board[8][8], int n) {
         for(int j=0; j<8; j++) {
             string chk="";
             if(isInRange(n, i)) {
-                for(int k=i; k<i+4; k++) chk+=board[k][j];
+                for(int k=i; k<i+n; k++) chk+=board[k][j];
                 if(isPalindrome(chk)) ans++;
             }
             chk="";
             if(isInRange(n, j)) {
-                for(int k=j; k<j+4; k++) chk+=board[i][k];
+                for(int k=j; k<j+n; k++) chk+=board[i][k];
                 if(isPalindrome(chk)) ans++;
             }
         }

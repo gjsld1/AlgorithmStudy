@@ -12,7 +12,7 @@
 using namespace std;
 
 bool isInRange(int n, int i) {
-    if(i+n>=8) return false;
+    if(i+n>8) return false;
     return true;
 }
 

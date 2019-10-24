@@ -13,11 +13,8 @@ int ans, n, k;
 int* sequence;
 
 void subsequence(int cur, int sum) {
-    if(sum==k) {
-        ans++;
-        return;
-    }
-    if(sum>k || cur==n) return;
+    if(sum==k) ans++;
+    if(sum>=k || cur==n) return;
     
     subsequence(cur+1, sum+sequence[cur]);
     subsequence(cur+1, sum);
@@ -35,6 +32,6 @@ int main() {
         ans=0;
         subsequence(0, 0);
         
-        cout << "#" << tc << " " << ans << endl;
+        cout << "#" << i << " " << ans << endl;
     }
 }

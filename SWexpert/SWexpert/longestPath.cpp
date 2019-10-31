@@ -17,10 +17,9 @@ vector<set<int>> v;
 int ans;
 
 void dfs(int cur) {
-    if(visited[cur] || v[cur].empty()) return;
+    if(visited[cur]) return;
     visited[cur]=1;
     ans++;
-    
     for(set<int>::iterator it=v[cur].begin(); it!=v[cur].end(); it++) {
         dfs(*it);
     }
@@ -36,10 +35,6 @@ int main() {
         int n, m;
         cin >> n >> m;
         
-        if(m==0) {
-            cout << "#" << i << " 1" << endl;
-            continue;
-        }
         visited = new int[n]();
         v.resize(n+1);
         
@@ -52,7 +47,6 @@ int main() {
         
         ans=0;
         for(int j=1; j<v.size(); j++) {
-            if(v[j].empty()) continue;
             dfs(j);
         }
         

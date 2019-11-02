@@ -45,12 +45,14 @@ int main() {
             v[b].insert(a);
         }
         
-        ans=0;
+        int max=1;
         for(int j=1; j<v.size(); j++) {
-            visited = new int[n]();
+            ans=0;
+            visited = new int[n+1]();
             dfs(j);
+            max = max<ans ? ans : max;
         }
         
-        cout << "#" << i << " " << ans << endl;
+        cout << "#" << i << " " << max << endl;
     }
 }

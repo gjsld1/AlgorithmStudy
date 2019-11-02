@@ -12,9 +12,9 @@
 #include <set>
 using namespace std;
 
+int ans;
 int* visited;
 vector<set<int>> v;
-int ans;
 
 void dfs(int cur) {
     if(visited[cur]) return;
@@ -23,6 +23,7 @@ void dfs(int cur) {
     for(set<int>::iterator it=v[cur].begin(); it!=v[cur].end(); it++) {
         dfs(*it);
     }
+    return;
 }
 
 int main() {
@@ -35,7 +36,6 @@ int main() {
         int n, m;
         cin >> n >> m;
         
-        visited = new int[n]();
         v.resize(n+1);
         
         while(m--) {
@@ -47,6 +47,7 @@ int main() {
         
         ans=0;
         for(int j=1; j<v.size(); j++) {
+            visited = new int[n]();
             dfs(j);
         }
         

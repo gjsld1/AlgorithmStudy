@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D4CC2C0023615FF50078DC99 /* longestPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4CC2BFF23615FF50078DC99 /* longestPath.cpp */; };
+		D40EDE4223770AB000CAB9F9 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D40EDE4123770AB000CAB9F9 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D4C568C32328DEE0005E3143 /* CopyFiles */ = {
+		D40EDE3C23770AB000CAB9F9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,21 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D436114F2331301800E77802 /* internalMatch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = internalMatch.cpp; sourceTree = "<group>"; };
-		D465EF2F2359AE0D00B63F35 /* palindrome.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = palindrome.cpp; sourceTree = "<group>"; };
-		D4713B7A2355A10000B9FA3B /* flatten.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = flatten.cpp; sourceTree = "<group>"; };
-		D47AF3CD2355DB0200C948FC /* nQueen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = nQueen.cpp; sourceTree = "<group>"; };
-		D4837B02234B6602002DA117 /* view.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = view.cpp; sourceTree = "<group>"; };
-		D4A12B30234EE841004C2E77 /* maxPrize.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = maxPrize.cpp; sourceTree = "<group>"; };
-		D4C3A6D523601E68008A80D4 /* sumOfSubsequence.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = sumOfSubsequence.cpp; sourceTree = "<group>"; };
-		D4C568C52328DEE0005E3143 /* SWexpert */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SWexpert; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4C568C82328DEE0005E3143 /* calculator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = calculator.cpp; sourceTree = "<group>"; };
-		D4CC2BFF23615FF50078DC99 /* longestPath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = longestPath.cpp; sourceTree = "<group>"; };
-		D4E273BA232E228C00DE65A6 /* oddPyramid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = oddPyramid.cpp; sourceTree = "<group>"; };
+		D40EDE3E23770AB000CAB9F9 /* kakaoIntern */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = kakaoIntern; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40EDE4123770AB000CAB9F9 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D4C568C22328DEE0005E3143 /* Frameworks */ = {
+		D40EDE3B23770AB000CAB9F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,103 +38,95 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D4C568BC2328DEE0005E3143 = {
+		D40EDE3523770AB000CAB9F9 = {
 			isa = PBXGroup;
 			children = (
-				D4C568C72328DEE0005E3143 /* SWexpert */,
-				D4C568C62328DEE0005E3143 /* Products */,
+				D40EDE4023770AB000CAB9F9 /* kakaoIntern */,
+				D40EDE3F23770AB000CAB9F9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D4C568C62328DEE0005E3143 /* Products */ = {
+		D40EDE3F23770AB000CAB9F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D4C568C52328DEE0005E3143 /* SWexpert */,
+				D40EDE3E23770AB000CAB9F9 /* kakaoIntern */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D4C568C72328DEE0005E3143 /* SWexpert */ = {
+		D40EDE4023770AB000CAB9F9 /* kakaoIntern */ = {
 			isa = PBXGroup;
 			children = (
-				D4C568C82328DEE0005E3143 /* calculator.cpp */,
-				D4E273BA232E228C00DE65A6 /* oddPyramid.cpp */,
-				D436114F2331301800E77802 /* internalMatch.cpp */,
-				D4837B02234B6602002DA117 /* view.cpp */,
-				D4A12B30234EE841004C2E77 /* maxPrize.cpp */,
-				D4713B7A2355A10000B9FA3B /* flatten.cpp */,
-				D47AF3CD2355DB0200C948FC /* nQueen.cpp */,
-				D465EF2F2359AE0D00B63F35 /* palindrome.cpp */,
-				D4C3A6D523601E68008A80D4 /* sumOfSubsequence.cpp */,
-				D4CC2BFF23615FF50078DC99 /* longestPath.cpp */,
+				D40EDE4123770AB000CAB9F9 /* main.cpp */,
 			);
-			path = SWexpert;
+			path = kakaoIntern;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D4C568C42328DEE0005E3143 /* SWexpert */ = {
+		D40EDE3D23770AB000CAB9F9 /* kakaoIntern */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4C568CC2328DEE0005E3143 /* Build configuration list for PBXNativeTarget "SWexpert" */;
+			buildConfigurationList = D40EDE4523770AB000CAB9F9 /* Build configuration list for PBXNativeTarget "kakaoIntern" */;
 			buildPhases = (
-				D4C568C12328DEE0005E3143 /* Sources */,
-				D4C568C22328DEE0005E3143 /* Frameworks */,
-				D4C568C32328DEE0005E3143 /* CopyFiles */,
+				D40EDE3A23770AB000CAB9F9 /* Sources */,
+				D40EDE3B23770AB000CAB9F9 /* Frameworks */,
+				D40EDE3C23770AB000CAB9F9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SWexpert;
-			productName = SWexpert;
-			productReference = D4C568C52328DEE0005E3143 /* SWexpert */;
+			name = kakaoIntern;
+			productName = kakaoIntern;
+			productReference = D40EDE3E23770AB000CAB9F9 /* kakaoIntern */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D4C568BD2328DEE0005E3143 /* Project object */ = {
+		D40EDE3623770AB000CAB9F9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "신예지";
 				TargetAttributes = {
-					D4C568C42328DEE0005E3143 = {
-						CreatedOnToolsVersion = 10.3;
+					D40EDE3D23770AB000CAB9F9 = {
+						CreatedOnToolsVersion = 11.1;
 					};
 				};
 			};
-			buildConfigurationList = D4C568C02328DEE0005E3143 /* Build configuration list for PBXProject "SWexpert" */;
+			buildConfigurationList = D40EDE3923770AB000CAB9F9 /* Build configuration list for PBXProject "kakaoIntern" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = D4C568BC2328DEE0005E3143;
-			productRefGroup = D4C568C62328DEE0005E3143 /* Products */;
+			mainGroup = D40EDE3523770AB000CAB9F9;
+			productRefGroup = D40EDE3F23770AB000CAB9F9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D4C568C42328DEE0005E3143 /* SWexpert */,
+				D40EDE3D23770AB000CAB9F9 /* kakaoIntern */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D4C568C12328DEE0005E3143 /* Sources */ = {
+		D40EDE3A23770AB000CAB9F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4CC2C0023615FF50078DC99 /* longestPath.cpp in Sources */,
+				D40EDE4223770AB000CAB9F9 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D4C568CA2328DEE0005E3143 /* Debug */ = {
+		D40EDE4323770AB000CAB9F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -175,7 +158,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -202,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		D4C568CB2328DEE0005E3143 /* Release */ = {
+		D40EDE4423770AB000CAB9F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +216,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -254,7 +235,7 @@
 			};
 			name = Release;
 		};
-		D4C568CD2328DEE0005E3143 /* Debug */ = {
+		D40EDE4623770AB000CAB9F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -262,7 +243,7 @@
 			};
 			name = Debug;
 		};
-		D4C568CE2328DEE0005E3143 /* Release */ = {
+		D40EDE4723770AB000CAB9F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -273,25 +254,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D4C568C02328DEE0005E3143 /* Build configuration list for PBXProject "SWexpert" */ = {
+		D40EDE3923770AB000CAB9F9 /* Build configuration list for PBXProject "kakaoIntern" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D4C568CA2328DEE0005E3143 /* Debug */,
-				D4C568CB2328DEE0005E3143 /* Release */,
+				D40EDE4323770AB000CAB9F9 /* Debug */,
+				D40EDE4423770AB000CAB9F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4C568CC2328DEE0005E3143 /* Build configuration list for PBXNativeTarget "SWexpert" */ = {
+		D40EDE4523770AB000CAB9F9 /* Build configuration list for PBXNativeTarget "kakaoIntern" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D4C568CD2328DEE0005E3143 /* Debug */,
-				D4C568CE2328DEE0005E3143 /* Release */,
+				D40EDE4623770AB000CAB9F9 /* Debug */,
+				D40EDE4723770AB000CAB9F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D4C568BD2328DEE0005E3143 /* Project object */;
+	rootObject = D40EDE3623770AB000CAB9F9 /* Project object */;
 }

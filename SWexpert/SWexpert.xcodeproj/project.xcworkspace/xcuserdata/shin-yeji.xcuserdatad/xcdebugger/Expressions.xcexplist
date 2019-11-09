@@ -3,6 +3,25 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "main:longestPath.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "dfs(int, int):longestPath.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "*it">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "dfs(int):longestPath.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "*it">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "main:view.cpp">
          <PersistentStrings>
             <PersistentString

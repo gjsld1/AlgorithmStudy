@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D44C13FA235362B100D62D11 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D44C13F9235362B100D62D11 /* main.cpp */; };
+		D44C13FA235362B100D62D11 /* 1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D44C13F9235362B100D62D11 /* 1.cpp */; };
+		D479C72C23548F1E0049C737 /* 2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479C72B23548F1E0049C737 /* 2.cpp */; };
+		D479C72E23548F6A0049C737 /* 3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D479C72D23548F6A0049C737 /* 3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +26,9 @@
 
 /* Begin PBXFileReference section */
 		D44C13F6235362B100D62D11 /* nHack */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = nHack; sourceTree = BUILT_PRODUCTS_DIR; };
-		D44C13F9235362B100D62D11 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D44C13F9235362B100D62D11 /* 1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 1.cpp; sourceTree = "<group>"; };
+		D479C72B23548F1E0049C737 /* 2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 2.cpp; sourceTree = "<group>"; };
+		D479C72D23548F6A0049C737 /* 3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = 3.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,9 @@
 		D44C13F8235362B100D62D11 /* nHack */ = {
 			isa = PBXGroup;
 			children = (
-				D44C13F9235362B100D62D11 /* main.cpp */,
+				D44C13F9235362B100D62D11 /* 1.cpp */,
+				D479C72B23548F1E0049C737 /* 2.cpp */,
+				D479C72D23548F6A0049C737 /* 3.cpp */,
 			);
 			path = nHack;
 			sourceTree = "<group>";
@@ -118,7 +124,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44C13FA235362B100D62D11 /* main.cpp in Sources */,
+				D479C72E23548F6A0049C737 /* 3.cpp in Sources */,
+				D479C72C23548F1E0049C737 /* 2.cpp in Sources */,
+				D44C13FA235362B100D62D11 /* 1.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,23 +29,44 @@ int main() {
         
         if(wait[0] < m) ans = "Impossible";
         else {
-            int now = 0;
-            
-            
-            for(int i=0; i<n; i++) {
-                int before;
-                if(i==0) before=0;
-                now += (wait[i]-before)/m * k;
-                if(now!=0) {
-                    now--;
-                    before = wait[i];
-                    continue;
+            int nowBoong=0;
+            for(int i=0, before=0; i<n; i++) {
+                nowBoong += (wait[i]-before)/m * k;
+                if(nowBoong!=0) {
+                    nowBoong--;
+                    before += m;
                 }
                 else {
                     ans = "Impossible";
                     break;
                 }
             }
+            /* time limit
+            int timer = 0;
+            int time = 0;
+            int curBoong = 0;
+            int cur=0;
+            
+            while(++timer) {
+                if(cur==n) break;
+                
+                time++;
+                
+                if(timer==m) {
+                    curBoong=k;
+                    timer=0;
+                }
+                
+                if(time==wait[cur]) {
+                    if(curBoong==0) {
+                        ans="Impossible";
+                        break;
+                    }
+                    cur++;
+                    curBoong--;
+                }
+            }
+             */
         }
         
         cout << "#" << q << " " << ans << endl;

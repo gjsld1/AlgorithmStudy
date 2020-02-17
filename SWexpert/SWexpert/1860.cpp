@@ -34,41 +34,16 @@ int main() {
                 nowBoong += (wait[i]-before)/m * k;
                 if(nowBoong!=0) {
                     nowBoong--;
-                    before += m;
+                    before += (wait[i]-before)/m * m;
                 }
                 else {
                     ans = "Impossible";
                     break;
                 }
             }
-            /* time limit
-            int timer = 0;
-            int time = 0;
-            int curBoong = 0;
-            int cur=0;
-            
-            while(++timer) {
-                if(cur==n) break;
-                
-                time++;
-                
-                if(timer==m) {
-                    curBoong=k;
-                    timer=0;
-                }
-                
-                if(time==wait[cur]) {
-                    if(curBoong==0) {
-                        ans="Impossible";
-                        break;
-                    }
-                    cur++;
-                    curBoong--;
-                }
-            }
-             */
         }
         
         cout << "#" << q << " " << ans << endl;
     }
 }
+

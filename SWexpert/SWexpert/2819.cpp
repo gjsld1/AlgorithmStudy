@@ -60,5 +60,6 @@ int main() {
         
         int ans = s.size();
         cout << "#" << q << " " << ans << endl;
+        s.clear();
     }
 }

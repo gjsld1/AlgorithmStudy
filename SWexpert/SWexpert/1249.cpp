@@ -7,75 +7,68 @@
 //
 
 #include <iostream>
-#include <string>
-#include <cstdlib>
+#include <algorithm>
+#include <cstring>
+#include <queue>
+
+#define INF 90000
 using namespace std;
 
-int** board;
+int map[101][101];
+int d[101][101];
+int dx[4] = {0,0,-1,1};
+int dy[4] = {1,-1,0,0};
 int n;
-int ans = 90000;
 
 bool isInRange(int x, int y) {
     if(x<0 || x>=n || y<0 || y>=n) return false;
     return true;
 }
 
-void dfs(int x, int y, int repair, int** visited) {
-    if(x==n-1 && y==n-1) {
-        ans = ans>repair ? repair : ans;
-        return;
-    }
-    if(ans<repair) return;
+int dijk() {
+    queue<pair<int,int>> pq;
+    d[0][0] = 0;
+    pq.push({0,0});
     
-    if(isInRange(x+1, y) && visited[x+1][y]==0) {
-        visited[x+1][y]=1;
-        dfs(x+1,y,repair+board[x+1][y],visited);
-        visited[x+1][y]=0;
+    while(!pq.empty()) {
+        int x = pq.front().first;
+        int y = pq.front().second;
+        pq.pop();
+        
+        if(x==n-1 && y==n-1) break;
+        
+        for(int i=0; i<4; i++) {
+            int nx = x+dx[i];
+            int ny = y+dy[i];
+            
+            if(!isInRange(nx, ny)) continue;
+            
+            if(d[nx][ny] < d[x][y]+map[nx][ny]) continue;
+            else {
+                d[nx][ny] = d[x][y]+map[nx][ny];
+                pq.push({nx,ny});
+            }
+        }
     }
     
-    if(isInRange(x-1, y) && visited[x-1][y]==0) {
-        visited[x-1][y]=1;
-        dfs(x-1,y,repair+board[x-1][y],visited);
-        visited[x-1][y]=0;
-    }
-    
-    if(isInRange(x, y+1) && visited[x][y+1]==0) {
-        visited[x][y+1]=1;
-        dfs(x,y+1,repair+board[x][y+1],visited);
-        visited[x][y+1]=0;
-    }
-    
-    if(isInRange(x, y-1) && visited[x][y-1]==0) {
-        visited[x][y-1]=1;
-        dfs(x,y-1,repair+board[x][y-1],visited);
-        visited[x][y-1]=0;
-    }
+    return d[n-1][n-1];
 }
 
 int main() {
     int tc;
-    cin >> tc;
+    scanf("%d",&tc);
     
     for(int q=1; q<=tc; q++) {
-        cin >> n;
+        scanf("%d",&n);
         
-        board = new int* [n];
-        int** visited = new int* [n];
         for(int i=0; i<n; i++) {
-            board[i] = new int[n];
-            visited[i] = new int[n]();
-            
-            string s;
-            cin >> s;
-            
             for(int j=0; j<n; j++) {
-                board[i][j] = s[j]-'0';
+                scanf("%1d", &map[i][j]);
+                
+                d[i][j] = INF;
             }
         }
         
-        dfs(0,0,0,visited);
-        
-        cout << "#" << q << " " << ans << endl;
-        ans = 90000;
+        cout << "#" << q << " " << dijk() << endl;
     }
 }

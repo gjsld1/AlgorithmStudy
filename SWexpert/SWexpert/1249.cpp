@@ -7,68 +7,58 @@
 //
 
 #include <iostream>
-#include <algorithm>
 #include <cstring>
+#include <algorithm>
 #include <queue>
 
-#define INF 90000
+#define INF 999999
 using namespace std;
 
 int map[101][101];
-int d[101][101];
-int dx[4] = {0,0,-1,1};
-int dy[4] = {1,-1,0,0};
 int n;
+int dx[] = {1,-1,0,0}, dy[] = {0,0,1,-1};
 
-bool isInRange(int x, int y) {
-    if(x<0 || x>=n || y<0 || y>=n) return false;
-    return true;
-}
-
-int dijk() {
-    queue<pair<int,int>> pq;
-    d[0][0] = 0;
-    pq.push({0,0});
+int solve() {
+    int path[101][101];
+    for (int i = 0; i < n; i++) memset(path[i], INF, sizeof(int)*n);
     
-    while(!pq.empty()) {
-        int x = pq.front().first;
-        int y = pq.front().second;
-        pq.pop();
-        
-        if(x==n-1 && y==n-1) break;
-        
-        for(int i=0; i<4; i++) {
-            int nx = x+dx[i];
-            int ny = y+dy[i];
+    queue<pair<int, int>> q;
+    
+    pair<int, int> idx;
+    int x, y;
+
+    path[0][0] = 0;
+    q.push({0,0});
+    
+    while (!q.empty()) {
+        idx = q.front();
+        q.pop();
+        for (int k = 0; k < 4; k++) {
+            x = idx.first + dx[k];
+            y = idx.second + dy[k];
             
-            if(!isInRange(nx, ny)) continue;
-            
-            if(d[nx][ny] < d[x][y]+map[nx][ny]) continue;
-            else {
-                d[nx][ny] = d[x][y]+map[nx][ny];
-                pq.push({nx,ny});
+            if (x < 0 || y < 0 || x >= n || y >= n) continue;
+            if (path[x][y] > path[idx.first][idx.second] + map[x][y]) {
+                q.push({x,y});
+                path[x][y] = path[idx.first][idx.second] + map[x][y];
             }
         }
     }
     
-    return d[n-1][n-1];
+    return path[n - 1][n - 1];
 }
-
 int main() {
     int tc;
-    scanf("%d",&tc);
+    scanf("%d", &tc);
     
-    for(int q=1; q<=tc; q++) {
-        scanf("%d",&n);
+    for (int q = 1; q<=tc; q++) {
+        scanf("%d", &n);
         
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<n; j++) {
+        for (int i=0; i<n; i++) {
+            for (int j=0; j<n; j++) {
                 scanf("%1d", &map[i][j]);
-                
-                d[i][j] = INF;
             }
         }
-        
-        cout << "#" << q << " " << dijk() << endl;
+        printf("#%d %d\n", q, solve());
     }
 }

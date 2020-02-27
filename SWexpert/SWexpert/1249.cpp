@@ -7,58 +7,58 @@
 //
 
 #include <iostream>
-#include <cstring>
-#include <algorithm>
 #include <queue>
 
-#define INF 999999
+#define INF 90000
 using namespace std;
 
-int map[101][101];
 int n;
-int dx[] = {1,-1,0,0}, dy[] = {0,0,1,-1};
+int map[101][101];
+int d[101][101];
 
 int solve() {
-    int path[101][101];
-    for (int i = 0; i < n; i++) memset(path[i], INF, sizeof(int)*n);
+    queue<pair<int,int>> q;
     
-    queue<pair<int, int>> q;
-    
-    pair<int, int> idx;
-    int x, y;
-
-    path[0][0] = 0;
+    d[0][0]=0;
     q.push({0,0});
     
-    while (!q.empty()) {
-        idx = q.front();
+    int dx[] = {1,-1,0,0};
+    int dy[] = {0,0,1,-1};
+    
+    while(!q.empty()) {
+        int x = q.front().first;
+        int y = q.front().second;
         q.pop();
-        for (int k = 0; k < 4; k++) {
-            x = idx.first + dx[k];
-            y = idx.second + dy[k];
+        
+        for(int i=0; i<4; i++) {
+            int nx = x+dx[i];
+            int ny = y+dy[i];
             
-            if (x < 0 || y < 0 || x >= n || y >= n) continue;
-            if (path[x][y] > path[idx.first][idx.second] + map[x][y]) {
-                q.push({x,y});
-                path[x][y] = path[idx.first][idx.second] + map[x][y];
+            if(nx<0 || ny<0 || nx>=n || ny>=n) continue;
+            if(d[nx][ny] > d[x][y]+map[nx][ny]) {
+                q.push({nx,ny});
+                d[nx][ny] = d[x][y]+map[nx][ny];
             }
         }
     }
     
-    return path[n - 1][n - 1];
+    return d[n-1][n-1];
 }
+
 int main() {
     int tc;
-    scanf("%d", &tc);
+    cin >> tc;
     
-    for (int q = 1; q<=tc; q++) {
-        scanf("%d", &n);
+    for(int q=1; q<=tc; q++) {
+        cin >> n;
         
-        for (int i=0; i<n; i++) {
-            for (int j=0; j<n; j++) {
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
                 scanf("%1d", &map[i][j]);
+                d[i][j] = INF;
             }
         }
-        printf("#%d %d\n", q, solve());
+        
+        cout << "#" << q << " " << solve() << endl;
     }
 }

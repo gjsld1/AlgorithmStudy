@@ -3,7 +3,34 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "main:view.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "heights[i+2]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:3752.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "arr[i]">
+            </PersistentString>
+            <PersistentString
+               value = "d[j]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "main:longestPath.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "main:2805.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "farm[i][j]">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "dfs(int, int):longestPath.cpp">
@@ -22,10 +49,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "main:view.cpp">
+         contextName = "main:1860.cpp">
          <PersistentStrings>
             <PersistentString
-               value = "heights[i+2]">
+               value = "wait[i]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -17,6 +17,8 @@ bool isChar(char c) {
 }
 
 float jacard(vector<string> v1, vector<string> v2) {
+    if(v1.empty() && v2.empty()) return 1;
+
     float intersection=0;
     float unionSet=0;
     
@@ -32,7 +34,7 @@ float jacard(vector<string> v1, vector<string> v2) {
         }
     }
     unionSet += v2.size();
-    
+
     return intersection/unionSet;
 }
 

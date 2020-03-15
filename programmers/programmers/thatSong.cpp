@@ -12,10 +12,20 @@
 
 using namespace std;
 
+string trimCode(string s) {
+    for(int i=0; i<s.size(); i++) {
+        if(s[i]=='#') {
+            s[i-1] = tolower(s[i-1]);
+            s.erase(i,1);
+            i--;
+        }
+    }
+    return s;
+}
+
 class Music {
 private:
-    string startTime, endTime, songName, code;
-    string playCode;
+    string startTime, endTime, songName, code, playCode;
     int playTime;
     int howLong() {
         int startH = atoi(startTime.substr(0,2).c_str());
@@ -30,24 +40,12 @@ private:
         int answer = (endM-startM) + (endH-startH)*60;
         return answer;
     }
-    void trimCode() {
-        for(int i=0; i<code.size(); i++) {
-            if(code[i]=='#') {
-                code[i-1] = tolower(code[i-1]);
-                code.erase(i,1);
-                i--;
-            }
-        }
-    }
     void makeCode() {
         playTime = howLong();
         
-        int repeat = playTime/code.size();
-        int add = playTime%code.size();
-        
         playCode = "";
-        for(int i=0; i<repeat; i++) playCode += code;
-        for(int i=0; i<add; i++) playCode += code[i];
+        for(int i=0; i<playTime/code.size(); i++) playCode += code;
+        playCode += code.substr(0,playTime%code.size());
     }
 public:
     Music(string s) {
@@ -57,7 +55,7 @@ public:
         songName = s.substr(12,idx-12);
         code = s.substr(idx+1);
         
-        trimCode();
+        code = trimCode(code);
         makeCode();
     }
     int getPlayTime() {
@@ -79,13 +77,7 @@ string solution(string m, vector<string> musicinfos) {
         v.push_back(m);
     }
     
-    for(int i=0; i<m.size(); i++) {
-        if(m[i]=='#') {
-            m[i-1] = tolower(m[i-1]);
-            m.erase(i,1);
-            i--;
-        }
-    }
+    m = trimCode(m);
     
     int ans = -1;
     for(int i=0; i<v.size(); i++) {

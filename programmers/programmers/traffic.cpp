@@ -12,7 +12,7 @@
 using namespace std;
 
 bool isProcessing(pair<int,int> p, int current) {
-    return (current>=p.first && current<=p.second) || (current+1000>=p.first && current+1000<=p.second);
+    return (current>=p.first && current<=p.second) || (current+999>=p.first && current+999<=p.second);
 }
 
 int solution(vector<string> lines) {
@@ -81,7 +81,11 @@ int main() {
     lines.push_back("2016-09-15 21:00:00.966 0.381s");
     lines.push_back("2016-09-15 21:00:02.066 2.62s");
     */
+    /*
     lines.push_back("2016-09-15 01:00:04.002 2.0s");
+    lines.push_back("2016-09-15 01:00:07.000 2s");
+    */
+    lines.push_back("2016-09-15 01:00:04.001 2.0s");
     lines.push_back("2016-09-15 01:00:07.000 2s");
     
     cout << solution(lines) << endl;

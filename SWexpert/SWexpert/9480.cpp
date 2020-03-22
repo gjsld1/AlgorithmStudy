@@ -14,7 +14,7 @@ int ans, n;
 string* word;
 
 void dfs(string str, int idx) {
-    if(idx==n-1) {
+    if(idx==n) {
         for(int i=0; i<26; i++) {
             if(str.find('a'+i) == string::npos) return;
         }

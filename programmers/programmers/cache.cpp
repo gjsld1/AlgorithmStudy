@@ -9,7 +9,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <queue>
 #include <algorithm>
 
 using namespace std;
@@ -30,9 +29,7 @@ int solution(int cacheSize, vector<string> cities) {
             answer += 5;
         }
 
-        if(cache.size()==cacheSize) {
-            cache.erase(it);
-        }
+        if(cache.size()==cacheSize) cache.erase(it);
         cache.push_back(cities[i]);
     }
     

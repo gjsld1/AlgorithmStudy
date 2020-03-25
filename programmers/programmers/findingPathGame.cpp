@@ -20,10 +20,10 @@ struct node {
     struct node* right;
 };
 
-struct node *x, *z;
+struct node *x, *z, *temp;
+vector<int> ans;
 
 vector<int> preorder(struct node *t) {
-    vector<int> ans;
     if(t!=z) {
         ans.push_back(t->index);
         preorder(t->left);
@@ -32,7 +32,6 @@ vector<int> preorder(struct node *t) {
     return ans;
 }
 vector<int> postorder(struct node *t) {
-    vector<int> ans;
     if(t!=z) {
         postorder(t->left);
         postorder(t->right);
@@ -42,43 +41,55 @@ vector<int> postorder(struct node *t) {
 }
 
 void makeTree (vector<pair<pair<int,int>,int>> nodeinfo, struct node* p) {
-    if(nodeinfo.empty()) return;
+    int n =nodeinfo.size();
+    if(n==0) return;
     
-    x = new node;
-    x->coordinate = nodeinfo[0].first;
-    x->index = nodeinfo[0].second;
+    temp = new node;
+    temp->coordinate = nodeinfo[0].first;
+    temp->index = nodeinfo[0].second;
+    temp->left=z;
+    temp->right=z;
+    int mid = nodeinfo[0].first.second;
     
-    if(p->right==z || nodeinfo[0].first.second > p->coordinate.second) p->right=x;
-    else p->left=x;
+    if(temp->coordinate.second > p->coordinate.second) p->right=temp;
+    else p->left=temp;
     
-    if(nodeinfo.size()==1) return;
+    if(n==1) return;
     
     vector<pair<pair<int,int>,int>> left, right;
-    int mid = nodeinfo[0].first.second;
-    for(int i=1; i<nodeinfo.size(); i++) {
+    for(int i=1; i<n; i++) {
         if(nodeinfo[i].first.second > mid) right.push_back(nodeinfo[i]);
         else left.push_back(nodeinfo[i]);
     }
     
-    makeTree(left,x);
-    makeTree(right,x);
+    makeTree(left,temp);
+    makeTree(right,temp);
 }
 
 vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
-    vector<pair<pair<int,int>,int>> order, left, right;
+    vector<pair<pair<int,int>,int>> order;
     for(int i=0; i<nodeinfo.size(); i++) order.push_back({{nodeinfo[i][1], nodeinfo[i][0]},i+1});
+    sort(order.begin(),order.end());
     
     z = new node;
     z->left = z;
     z->right = z;
     
     x = new node;
-    x->right = z;
+    x->coordinate=order[order.size()-1].first;
+    x->index=order[order.size()-1].second;
     
-    makeTree(order,x);
+    vector<pair<pair<int,int>,int>> left, right;
+    for(int i=order.size()-2; i>=0; i--) {
+        if(order[i].first.second > x->coordinate.second) right.push_back(order[i]);
+        else left.push_back(order[i]);
+    }
+    makeTree(left, x);
+    makeTree(right,x);
     
     vector<vector<int>> answer;
     answer.push_back(preorder(x));
+    ans.clear();
     answer.push_back(postorder(x));
     return answer;
 }

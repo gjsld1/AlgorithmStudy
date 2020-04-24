@@ -78,6 +78,8 @@ vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
     x = new node;
     x->coordinate=order[order.size()-1].first;
     x->index=order[order.size()-1].second;
+    x->left=z;
+    x->right=z;
     
     vector<pair<pair<int,int>,int>> left, right;
     for(int i=order.size()-2; i>=0; i--) {

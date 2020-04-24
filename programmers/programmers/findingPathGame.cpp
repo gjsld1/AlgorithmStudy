@@ -20,7 +20,7 @@ struct node {
     struct node* right;
 };
 
-struct node *x, *z, *temp;
+struct node *x, *z;
 vector<int> ans;
 
 vector<int> preorder(struct node *t) {
@@ -44,7 +44,7 @@ void makeTree (vector<pair<pair<int,int>,int>> nodeinfo, struct node* p) {
     int n =nodeinfo.size();
     if(n==0) return;
     
-    temp = new node;
+    struct node* temp = new node;
     temp->coordinate = nodeinfo[0].first;
     temp->index = nodeinfo[0].second;
     temp->left=z;
@@ -70,7 +70,7 @@ vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
     vector<pair<pair<int,int>,int>> order;
     for(int i=0; i<nodeinfo.size(); i++) order.push_back({{nodeinfo[i][1], nodeinfo[i][0]},i+1});
     sort(order.begin(),order.end());
-    
+ 
     z = new node;
     z->left = z;
     z->right = z;

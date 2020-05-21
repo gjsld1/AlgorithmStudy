@@ -8,29 +8,34 @@
 
 #include <iostream>
 using namespace std;
- 
-int main(){
+
+int main() {
     int tc;
-    scanf("%d",&tc);
-    int c=1;
+    cin >> tc;
     
-    while(tc--){
-        int d[10001] = {0,};
-        int arr[101] = {0,};
-        
+    for(int q=1; q<=tc; q++) {
         int n;
-        scanf("%d",&n);
-        for(int i=1;i<=n;i++) scanf("%d",&arr[i]);
+        cin >> n;
         
+        int* score=new int[n+1];
+        for(int i=1; i<=n; i++) cin >> score[i];
+        
+        int* d = new int[n*100+1]();
         d[0]=1;
-        for(int i=1;i<=n;i++){
-            for(int j=10000;j>=0;j--){
-                if(d[j]) d[j+arr[i]]=1;
+        
+        for(int i=1; i<=n; i++) {
+            for(int j=100*n; j>=0; j--) {
+                if(d[j]) d[j+score[i]]=1;
             }
         }
- 
+        
         int ans=0;
-        for(int i=0;i<=10000;i++) if(d[i]) ans++;
-        printf("#%d %d\n",c++,ans);
+        for(int i=0; i<=100*n; i++) {
+            if(d[i]) {
+                ans++;
+            }
+        }
+        
+        cout << "#" << q << " " << ans << endl;
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D4E9931A241A526D009D7437 /* newsClustering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4E99319241A526D009D7437 /* newsClustering.cpp */; };
+		D4C2EB51246286B50025C542 /* macaron.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4C2EB50246286B50025C542 /* macaron.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +23,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D4554C82241E470B00E7A810 /* traffic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = traffic.cpp; sourceTree = "<group>"; };
+		D46E65E92452ABBF00340DDF /* shuttleBus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = shuttleBus.cpp; sourceTree = "<group>"; };
+		D46E65EB2452C25600340DDF /* checkWall.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = checkWall.cpp; sourceTree = "<group>"; };
+		D484F55F241CEBCB009B9FC6 /* thatSong.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = thatSong.cpp; sourceTree = "<group>"; };
+		D4C2EB50246286B50025C542 /* macaron.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = macaron.cpp; sourceTree = "<group>"; };
 		D4E99316241A526D009D7437 /* programmers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = programmers; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E99319241A526D009D7437 /* newsClustering.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = newsClustering.cpp; sourceTree = "<group>"; };
+		D4EA22592429D2CE0053136F /* cache.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = cache.cpp; sourceTree = "<group>"; };
+		D4F32E21242B8E640090BC10 /* findingPathGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = findingPathGame.cpp; sourceTree = "<group>"; };
+		D4FA32DD2451D0DC0026174B /* openChatRoom.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = openChatRoom.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,14 @@
 			isa = PBXGroup;
 			children = (
 				D4E99319241A526D009D7437 /* newsClustering.cpp */,
+				D484F55F241CEBCB009B9FC6 /* thatSong.cpp */,
+				D4554C82241E470B00E7A810 /* traffic.cpp */,
+				D4EA22592429D2CE0053136F /* cache.cpp */,
+				D4F32E21242B8E640090BC10 /* findingPathGame.cpp */,
+				D4FA32DD2451D0DC0026174B /* openChatRoom.cpp */,
+				D46E65E92452ABBF00340DDF /* shuttleBus.cpp */,
+				D46E65EB2452C25600340DDF /* checkWall.cpp */,
+				D4C2EB50246286B50025C542 /* macaron.cpp */,
 			);
 			path = programmers;
 			sourceTree = "<group>";
@@ -119,7 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4E9931A241A526D009D7437 /* newsClustering.cpp in Sources */,
+				D4C2EB51246286B50025C542 /* macaron.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

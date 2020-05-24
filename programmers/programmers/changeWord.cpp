@@ -10,7 +10,7 @@
 
 #include <string>
 #include <vector>
-#include <algrithm>
+#include <algorithm>
 using namespace std;
 
 int minCnt;

@@ -15,10 +15,6 @@
 #include <algorithm>
 using namespace std;
 
-bool compare(pair<int,string> p1, pair<int,string> p2) {
-    return p1.first>p2.first;
-}
-
 vector<int> solution(vector<string> genres, vector<int> plays) {
     map<string,int> m;
     for(int i=0; i<genres.size();  i++) {
@@ -28,7 +24,7 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
     for(map<string,int>::iterator it=m.begin(); it!=m.end(); ++it) {
         v.push_back({it->second,it->first});
     }
-    sort(v.begin(), v.end(), compare);
+    sort(v.begin(), v.end(), greater<pair<int,string>>());
     
     vector<int> answer;
     for(int i=0; i<v.size(); i++) {
@@ -39,8 +35,14 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
         if(temp.size()==1) answer.push_back(temp[0].second);
         else {
             sort(temp.begin(), temp.end());
-            answer.push_back(temp[temp.size()-1].second);
-            answer.push_back(temp[temp.size()-2].second);
+            if(temp[temp.size()-1].first==temp[temp.size()-2].first) {
+                answer.push_back(temp[temp.size()-2].second);
+                answer.push_back(temp[temp.size()-1].second);
+            }
+            else {
+                answer.push_back(temp[temp.size()-1].second);
+                answer.push_back(temp[temp.size()-2].second);
+            }
         }
     }
     return answer;

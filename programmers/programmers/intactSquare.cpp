@@ -14,11 +14,11 @@ long long solution(int w,int h) {
     float incline = float(-h)/(float)w;
     long long answer=0;
     for(int i=1; i<=w; i++) {
-        answer += incline*i+12;
+        answer += incline*i+h;
     }
     return answer*2;
 }
 
 int main() {
-    cout << solution(8,12) << endl;
+    cout << solution(3,3) << endl;
 }

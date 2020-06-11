@@ -68,3 +68,30 @@ int main() {
         cout << temp[i] << " ";
     }
 }
+
+/*
+#include <queue>
+vector<int> solution(vector<int> progrosses, vector<int> speeds) {
+    vector<int> answer;
+    queue<int> q;
+    
+    for(int i=0; i<progrosses.size(); i++) {
+        int day=(100-progrosses[i])/speeds[i];
+        if((100-progrosses[i])%speeds[i]!=0) day++;
+        q.push(day);
+    }
+    
+    while(!q.empty()) {
+        int cur=q.front();
+        q.pop();
+        int cnt=1;
+        
+        while(cur>=q.front() && !q.empty()) {
+            cnt++;
+            q.pop();
+        }
+        answer.push_back(cnt);
+    }
+    return answer;
+}
+*/
